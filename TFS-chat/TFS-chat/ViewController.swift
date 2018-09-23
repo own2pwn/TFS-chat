@@ -16,19 +16,48 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupScreen()
+        log.debug()
     }
 
-    // MARK: - Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-    private func setupScreen() {
-        setup()
+        log.debug()
     }
 
-    private func setup() {
-        let setup = [setColors]
-        setup.forEach { $0() }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        log.debug()
     }
 
-    private func setColors() {}
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        log.debug()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        log.debug()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    // MARK: - Layout
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        log.debug()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        log.debug()
+    }
 }
