@@ -29,7 +29,7 @@ public final class Logger {
             print("Application moved from \(previousState.stringValue) to \(currentState.stringValue): [\(caller)]")
             previousState = currentState
         } else {
-            print("Application is \(currentState.stringValue): \(caller)")
+            print("Application is in \(currentState.stringValue): \(caller)")
         }
     }
 
