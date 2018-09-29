@@ -15,32 +15,6 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        log.debug()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        log.debug()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        log.debug()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        log.debug()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-        log.debug()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -48,16 +22,4 @@ final class ViewController: UIViewController {
     }
 
     // MARK: - Layout
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        log.debug()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        log.debug()
-    }
 }
