@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE14648B216108ED00344D4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14648A216108ED00344D4D /* Constants.swift */; };
 		DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */; };
-		DE3B87722157ADE300D9DA8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B87712157ADE300D9DA8D /* ViewController.swift */; };
+		DE3B87722157ADE300D9DA8D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B87712157ADE300D9DA8D /* ProfileController.swift */; };
 		DE3B87752157ADE300D9DA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87732157ADE300D9DA8D /* Main.storyboard */; };
 		DE3B87772157ADE400D9DA8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87762157ADE400D9DA8D /* Assets.xcassets */; };
 		DE3B877A2157ADE400D9DA8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */; };
-		DE8F4C922157B84600B14E76 /* UIApplicationState+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F4C912157B84600B14E76 /* UIApplicationState+Extension.swift */; };
-		DEC7AB052157B1B7006FC0A4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC7AB042157B1B7006FC0A4 /* Logger.swift */; };
+		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE14648A216108ED00344D4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE3B876C2157ADE300D9DA8D /* TFS-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TFS-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE3B87712157ADE300D9DA8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE3B87712157ADE300D9DA8D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		DE3B87742157ADE300D9DA8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE3B87762157ADE400D9DA8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE3B87792157ADE400D9DA8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE3B877B2157ADE400D9DA8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE8F4C912157B84600B14E76 /* UIApplicationState+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationState+Extension.swift"; sourceTree = "<group>"; };
-		DEC7AB042157B1B7006FC0A4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 				DE8F4C932157B87200B14E76 /* common */,
 				DE8F4C902157B83800B14E76 /* Extension */,
 				DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */,
-				DE3B87712157ADE300D9DA8D /* ViewController.swift */,
+				DE3B87712157ADE300D9DA8D /* ProfileController.swift */,
 				DE3B87732157ADE300D9DA8D /* Main.storyboard */,
 				DE3B87762157ADE400D9DA8D /* Assets.xcassets */,
 				DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */,
@@ -73,7 +73,7 @@
 		DE8F4C902157B83800B14E76 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				DE8F4C912157B84600B14E76 /* UIApplicationState+Extension.swift */,
+				DEBD93BC215FA55400671ABB /* UIColor+Init.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 		DE8F4C932157B87200B14E76 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				DEC7AB042157B1B7006FC0A4 /* Logger.swift */,
+				DE14648A216108ED00344D4D /* Constants.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -157,10 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE8F4C922157B84600B14E76 /* UIApplicationState+Extension.swift in Sources */,
-				DE3B87722157ADE300D9DA8D /* ViewController.swift in Sources */,
-				DEC7AB052157B1B7006FC0A4 /* Logger.swift in Sources */,
+				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
+				DE3B87722157ADE300D9DA8D /* ProfileController.swift in Sources */,
 				DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */,
+				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
