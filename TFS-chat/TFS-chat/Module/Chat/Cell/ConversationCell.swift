@@ -20,7 +20,7 @@ final class ConversationCell: UITableViewCell {
     @IBOutlet
     private var dateLabel: UILabel!
 
-    // MARK: - Setup
+    // MARK: - Interface
 
     func setup(with model: ConversationCellViewModel) {
         recipentLabel.text = model.name

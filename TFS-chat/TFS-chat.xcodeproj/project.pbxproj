@@ -19,6 +19,9 @@
 		DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FC216A6A9F00019ACD /* ConversationCellViewModel.swift */; };
 		DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */; };
 		DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6601216A737300019ACD /* ConversationListProvider.swift */; };
+		DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6605216A77D300019ACD /* ConversationViewController.swift */; };
+		DEBD6609216A7B6400019ACD /* DialogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6608216A7B6400019ACD /* DialogCell.swift */; };
+		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		DEBD65FC216A6A9F00019ACD /* ConversationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModel.swift; sourceTree = "<group>"; };
 		DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModelImp.swift; sourceTree = "<group>"; };
 		DEBD6601216A737300019ACD /* ConversationListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListProvider.swift; sourceTree = "<group>"; };
+		DEBD6605216A77D300019ACD /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		DEBD6608216A7B6400019ACD /* DialogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCell.swift; sourceTree = "<group>"; };
+		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +109,7 @@
 		DE9F43B62169FEB100B224D4 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				DEBD6604216A77CE00019ACD /* Dialog */,
 				DEBD6603216A755300019ACD /* Profile */,
 				DE9F43B72169FEBB00B224D4 /* Chat */,
 			);
@@ -140,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
+				DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -150,6 +158,23 @@
 				DE3B87712157ADE300D9DA8D /* ProfileController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		DEBD6604216A77CE00019ACD /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				DEBD6607216A7B5E00019ACD /* Cell */,
+				DEBD6605216A77D300019ACD /* ConversationViewController.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		DEBD6607216A7B5E00019ACD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DEBD6608216A7B6400019ACD /* DialogCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */,
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
 				DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */,
 				DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */,
@@ -230,8 +256,10 @@
 				DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */,
 				DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */,
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
+				DEBD6609216A7B6400019ACD /* DialogCell.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
+				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

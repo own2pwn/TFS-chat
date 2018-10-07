@@ -26,7 +26,7 @@ final class ConversationListProvider {
 
         let fourth = ConversationModel(recipent: "User 4", lastMessage: "a message",
                                        lastMessageDate: Date().addingTimeInterval(-60 * 60 * 25),
-                                       isRecipentOnline: true, hasUnreadMessages: true)
+                                       isRecipentOnline: false, hasUnreadMessages: true)
 
         let fifth = ConversationModel(recipent: "User 5", lastMessage: "a message [2]",
                                       lastMessageDate: Date().addingTimeInterval(-60 * 60 * 49),
@@ -59,7 +59,7 @@ final class ConversationListProvider {
                                        isRecipentOnline: false, hasUnreadMessages: false)
 
         let third = ConversationModel(recipent: "Bot 3", lastMessage: nil,
-                                      lastMessageDate: nil, isRecipentOnline: false,
+                                      lastMessageDate: nil, isRecipentOnline: true,
                                       hasUnreadMessages: false)
 
         var result = [first, second, third]

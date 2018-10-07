@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let showDialogSegue = "idShowDialog"
+
 final class ConversationsListViewController: UIViewController {
     // MARK: - Outlets
 
@@ -20,9 +22,31 @@ final class ConversationsListViewController: UIViewController {
         super.viewDidLoad()
         addBarButton()
 
-        tableView.estimatedRowHeight = 75
+        tableView.estimatedRowHeight = 74
         tableView.rowHeight = UITableView.automaticDimension
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let selectedItem = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedItem, animated: false)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == showDialogSegue,
+            let dialog = segue.destination as? ConversationViewController,
+            let model = sender as? ConversationCellViewModel else {
+            super.prepare(for: segue, sender: sender)
+            return
+        }
+
+        dialog.title = model.name
+    }
+
+    // MARK: - Methods
 
     private func addBarButton() {
         let image = UIImage(named: "imgBarButtonProfile")
@@ -64,7 +88,17 @@ final class ConversationsListViewController: UIViewController {
     }
 }
 
-extension ConversationsListViewController: UITableViewDelegate {}
+extension ConversationsListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model: ConversationCellViewModel
+        if indexPath.section == 0 {
+            model = activeConversations[indexPath.row]
+        } else {
+            model = historyConversations[indexPath.row]
+        }
+        performSegue(withIdentifier: showDialogSegue, sender: model)
+    }
+}
 
 extension ConversationsListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

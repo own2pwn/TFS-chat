@@ -35,7 +35,7 @@ final class ConversationCellViewModelImp: ConversationCellViewModel {
             messageFont = model.hasUnreadMessages ?
                 UIFont.systemFont(ofSize: 17, weight: .medium) : UIFont.systemFont(ofSize: 17)
         } else {
-            messageFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+            messageFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
         }
 
         date = model.lastMessageDate
