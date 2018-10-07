@@ -18,6 +18,7 @@
 		DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */; };
 		DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FC216A6A9F00019ACD /* ConversationCellViewModel.swift */; };
 		DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */; };
+		DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6601216A737300019ACD /* ConversationListProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		DEBD65FC216A6A9F00019ACD /* ConversationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModel.swift; sourceTree = "<group>"; };
 		DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModelImp.swift; sourceTree = "<group>"; };
+		DEBD6601216A737300019ACD /* ConversationListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +76,6 @@
 				DE8F4C932157B87200B14E76 /* common */,
 				DE8F4C902157B83800B14E76 /* Extension */,
 				DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */,
-				DE3B87712157ADE300D9DA8D /* ProfileController.swift */,
 				DE3B87732157ADE300D9DA8D /* Main.storyboard */,
 				DE3B87762157ADE400D9DA8D /* Assets.xcassets */,
 				DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */,
@@ -102,6 +103,7 @@
 		DE9F43B62169FEB100B224D4 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				DEBD6603216A755300019ACD /* Profile */,
 				DE9F43B72169FEBB00B224D4 /* Chat */,
 			);
 			path = Module;
@@ -137,8 +139,17 @@
 		DEBD6600216A6B9300019ACD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DEBD6603216A755300019ACD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DE3B87712157ADE300D9DA8D /* ProfileController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +232,7 @@
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
+				DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

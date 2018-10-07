@@ -12,61 +12,20 @@ final class ProfileController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet
-    var avatarImageView: UIImageView!
+    private var avatarImageView: UIImageView!
 
     @IBOutlet
-    var changeAvatarButton: UIButton!
+    private var changeAvatarButton: UIButton!
 
     @IBOutlet
-    var editButton: UIButton!
+    private var editButton: UIButton!
 
     // MARK: - Overrides
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        /*
-         printEditButtonFrame()
-
-         В методе `init(coder:)` @IBOutlet'ы еще не будут инициализированы и будут равны nil.
-         Т.к. переменные объявлены как Implicitly Unwrapped,
-         то при доступе к nil (и соответственно force unwrap'e) происходит падение приложения.
-
-         Если бы мы попытались вывести фрейм как print(editButton?.frame)
-         то получили бы в консоле `nil` без падения.
-
-         @IBOutlet'ы должны уже быть инициализированы на момент вызова `viewDidLoad`
-         или после вызова `super.loadView()` в `loadView()`
-
-         Например:
-
-         ```
-         override func loadView() {
-         print(avatarImageView == nil) // true
-         super.loadView()
-         print(avatarImageView == nil) // false
-         }
-         ```
-
-         */
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        printEditButtonFrame()
         setupEditButton()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        printEditButtonFrame()
-        /*
-         В `viewDidload` размер и позиции кнопки были установлены в соответствии значениям из сториборда
-         в `viewDidAppear` уже были просчитаны констрейнты и фрейм кнопки был установлен в соответствии
-         значениям высчитанных констрейнтов.
-         */
     }
 
     // MARK: - Methods
@@ -149,11 +108,11 @@ final class ProfileController: UIViewController {
         present(alertController, animated: true)
     }
 
-    // MARK: - Helpers
-
-    private func printEditButtonFrame() {
-        print(editButton.frame)
+    @IBAction func dismiss() {
+        dismiss(animated: true)
     }
+
+    // MARK: - Helpers
 
     private func presentImagePicker(with type: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
