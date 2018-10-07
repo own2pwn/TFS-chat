@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qN1-we-Q8O">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,87 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tinkoff Chat-->
+        <scene sceneID="kTW-F5-gB1">
+            <objects>
+                <viewController title="Tinkoff Chat" id="O8a-fd-Xt3" customClass="ConversationsListViewController" customModule="TFS_chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LaN-qu-84t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KAw-RA-ZpW">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatCell" rowHeight="117" id="erh-v2-dot" customClass="ConversationCell" customModule="TFS_chat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="117"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="erh-v2-dot" id="QDn-9J-axY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="116.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Evgeniy Petrov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-Nv-B8y">
+                                                    <rect key="frame" x="16" y="8" width="116.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's up?ghghhgghhghghghghghghgghghghghghghghhghghghghghgh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hA-kJ-Yhp">
+                                                    <rect key="frame" x="16" y="37" width="288" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri, 16:40" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzC-Ls-RZu">
+                                                    <rect key="frame" x="243" y="10" width="61" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3hA-kJ-Yhp" firstAttribute="top" secondItem="xcO-Nv-B8y" secondAttribute="bottom" constant="8" id="ALx-Sx-ut4"/>
+                                                <constraint firstAttribute="trailing" secondItem="hzC-Ls-RZu" secondAttribute="trailing" constant="16" id="FOf-10-faT"/>
+                                                <constraint firstItem="hzC-Ls-RZu" firstAttribute="centerY" secondItem="xcO-Nv-B8y" secondAttribute="centerY" id="GCA-Z3-uS9"/>
+                                                <constraint firstItem="xcO-Nv-B8y" firstAttribute="top" secondItem="QDn-9J-axY" secondAttribute="top" constant="8" id="JXT-af-71V"/>
+                                                <constraint firstAttribute="trailing" secondItem="3hA-kJ-Yhp" secondAttribute="trailing" constant="16" id="Jri-cP-W18"/>
+                                                <constraint firstItem="3hA-kJ-Yhp" firstAttribute="leading" secondItem="xcO-Nv-B8y" secondAttribute="leading" id="XL8-kL-Gol"/>
+                                                <constraint firstItem="hzC-Ls-RZu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xcO-Nv-B8y" secondAttribute="trailing" constant="16" id="cWL-Iv-dXW"/>
+                                                <constraint firstItem="xcO-Nv-B8y" firstAttribute="leading" secondItem="QDn-9J-axY" secondAttribute="leading" constant="16" id="jKE-4Y-lfS"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3hA-kJ-Yhp" secondAttribute="bottom" constant="8" id="nyg-Yf-6Ce"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="hzC-Ls-RZu" id="Cfy-b0-lpK"/>
+                                            <outlet property="messageLabel" destination="3hA-kJ-Yhp" id="aGR-i5-P9G"/>
+                                            <outlet property="recipentLabel" destination="xcO-Nv-B8y" id="cCV-Kc-7zu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="O8a-fd-Xt3" id="bYi-4T-ye9"/>
+                                    <outlet property="delegate" destination="O8a-fd-Xt3" id="Oa2-Kn-yp4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KAw-RA-ZpW" firstAttribute="leading" secondItem="iIY-p4-jp7" secondAttribute="leading" id="bXt-cF-2F8"/>
+                            <constraint firstItem="iIY-p4-jp7" firstAttribute="bottom" secondItem="KAw-RA-ZpW" secondAttribute="bottom" id="j3L-qZ-onw"/>
+                            <constraint firstItem="KAw-RA-ZpW" firstAttribute="top" secondItem="iIY-p4-jp7" secondAttribute="top" id="tcE-ZM-zPc"/>
+                            <constraint firstItem="iIY-p4-jp7" firstAttribute="trailing" secondItem="KAw-RA-ZpW" secondAttribute="trailing" id="ttW-9R-8JT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iIY-p4-jp7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="udu-yv-CKj"/>
+                    <connections>
+                        <outlet property="tableView" destination="KAw-RA-ZpW" id="eeM-fS-57c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Dj-Zc-Ffv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.375" y="129.92957746478874"/>
+        </scene>
         <!--Profile Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -87,6 +168,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1136.25" y="129.92957746478874"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="auQ-Ja-Klc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qN1-we-Q8O" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Efd-VG-eAO">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O8a-fd-Xt3" kind="relationship" relationship="rootViewController" id="xvx-Qj-Xhj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9P6-u5-SHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570" y="130"/>
         </scene>
     </scenes>
     <resources>
