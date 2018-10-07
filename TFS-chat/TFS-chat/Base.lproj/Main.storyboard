@@ -47,7 +47,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evgeniy Petrov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOS-T5-8n7">
-                                <rect key="frame" x="16" y="340" width="153.5" height="26.5"/>
+                                <rect key="frame" x="16" y="340" width="154" height="26.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,12 +67,12 @@
                             <constraint firstItem="yOS-T5-8n7" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="DOJ-fq-E9x"/>
                             <constraint firstItem="yOS-T5-8n7" firstAttribute="top" secondItem="Ngf-yQ-fEG" secondAttribute="bottom" constant="16" id="FpM-g1-MbP"/>
                             <constraint firstItem="yOS-T5-8n7" firstAttribute="leading" secondItem="Ngf-yQ-fEG" secondAttribute="leading" id="Grb-L8-i9i"/>
-                            <constraint firstItem="Ngf-yQ-fEG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Opu-9D-gdW"/>
+                            <constraint firstItem="ahx-eV-JSe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IXL-d2-Bty"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" constant="16" id="SFX-hh-QyM"/>
                             <constraint firstItem="ItN-7M-DiU" firstAttribute="trailing" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="SMf-W1-Ja8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ahx-eV-JSe" secondAttribute="bottom" constant="20" id="Wbj-lt-Ptv"/>
-                            <constraint firstItem="ahx-eV-JSe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XXu-0r-t3c"/>
                             <constraint firstItem="pXN-cb-hiF" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="eng-DK-Oko"/>
+                            <constraint firstItem="Ngf-yQ-fEG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jn3-Qq-3yH"/>
                             <constraint firstItem="pXN-cb-hiF" firstAttribute="leading" secondItem="yOS-T5-8n7" secondAttribute="leading" id="sqz-6e-aJ8"/>
                             <constraint firstItem="ItN-7M-DiU" firstAttribute="bottom" secondItem="Ngf-yQ-fEG" secondAttribute="bottom" id="wA4-nZ-crz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ahx-eV-JSe" secondAttribute="trailing" constant="16" id="wAv-kQ-IUg"/>
