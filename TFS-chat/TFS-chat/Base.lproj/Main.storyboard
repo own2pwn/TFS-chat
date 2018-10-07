@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,16 +46,34 @@
                                     <color key="titleColor" red="0.11181893199682236" green="0.1118365004658699" blue="0.1118125319480896" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evgeniy Petrov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOS-T5-8n7">
+                                <rect key="frame" x="16" y="340" width="154" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like Swift, Love SE,  Live near Tinkoff Bank" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-cb-hiF">
+                                <rect key="frame" x="16" y="374.5" width="230.5" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ItN-7M-DiU" firstAttribute="height" secondItem="Ngf-yQ-fEG" secondAttribute="height" multiplier="1 / 3.85" id="6NJ-rs-pPz"/>
                             <constraint firstItem="Ngf-yQ-fEG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="AAZ-Ni-NRi"/>
-                            <constraint firstItem="Ngf-yQ-fEG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Opu-9D-gdW"/>
+                            <constraint firstItem="pXN-cb-hiF" firstAttribute="top" secondItem="yOS-T5-8n7" secondAttribute="bottom" constant="8" id="CS9-Zo-QEg"/>
+                            <constraint firstItem="yOS-T5-8n7" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="DOJ-fq-E9x"/>
+                            <constraint firstItem="yOS-T5-8n7" firstAttribute="top" secondItem="Ngf-yQ-fEG" secondAttribute="bottom" constant="16" id="FpM-g1-MbP"/>
+                            <constraint firstItem="yOS-T5-8n7" firstAttribute="leading" secondItem="Ngf-yQ-fEG" secondAttribute="leading" id="Grb-L8-i9i"/>
+                            <constraint firstItem="ahx-eV-JSe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IXL-d2-Bty"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" constant="16" id="SFX-hh-QyM"/>
                             <constraint firstItem="ItN-7M-DiU" firstAttribute="trailing" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="SMf-W1-Ja8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ahx-eV-JSe" secondAttribute="bottom" constant="20" id="Wbj-lt-Ptv"/>
-                            <constraint firstItem="ahx-eV-JSe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XXu-0r-t3c"/>
+                            <constraint firstItem="pXN-cb-hiF" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ngf-yQ-fEG" secondAttribute="trailing" id="eng-DK-Oko"/>
+                            <constraint firstItem="Ngf-yQ-fEG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jn3-Qq-3yH"/>
+                            <constraint firstItem="pXN-cb-hiF" firstAttribute="leading" secondItem="yOS-T5-8n7" secondAttribute="leading" id="sqz-6e-aJ8"/>
                             <constraint firstItem="ItN-7M-DiU" firstAttribute="bottom" secondItem="Ngf-yQ-fEG" secondAttribute="bottom" id="wA4-nZ-crz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ahx-eV-JSe" secondAttribute="trailing" constant="16" id="wAv-kQ-IUg"/>
                         </constraints>
