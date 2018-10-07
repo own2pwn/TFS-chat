@@ -20,7 +20,7 @@
 		DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */; };
 		DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6601216A737300019ACD /* ConversationListProvider.swift */; };
 		DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6605216A77D300019ACD /* ConversationViewController.swift */; };
-		DEBD6609216A7B6400019ACD /* DialogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6608216A7B6400019ACD /* DialogCell.swift */; };
+		DEBD6609216A7B6400019ACD /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6608216A7B6400019ACD /* MessageCell.swift */; };
 		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 		DEBD65FE216A6AA500019ACD /* ConversationCellViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModelImp.swift; sourceTree = "<group>"; };
 		DEBD6601216A737300019ACD /* ConversationListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListProvider.swift; sourceTree = "<group>"; };
 		DEBD6605216A77D300019ACD /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		DEBD6608216A7B6400019ACD /* DialogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCell.swift; sourceTree = "<group>"; };
+		DEBD6608216A7B6400019ACD /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +172,7 @@
 		DEBD6607216A7B5E00019ACD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				DEBD6608216A7B6400019ACD /* DialogCell.swift */,
+				DEBD6608216A7B6400019ACD /* MessageCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */,
 				DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */,
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
-				DEBD6609216A7B6400019ACD /* DialogCell.swift in Sources */,
+				DEBD6609216A7B6400019ACD /* MessageCell.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,

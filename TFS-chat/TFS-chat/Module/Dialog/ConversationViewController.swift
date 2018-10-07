@@ -35,7 +35,7 @@ extension ConversationViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseId = indexPath.row % 2 == 0 ? "incomingCell" : "outgoingCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! DialogCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! MessageCell
         let model = messages[indexPath.row]
 
         cell.setup(with: model)
