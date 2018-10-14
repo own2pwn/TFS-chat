@@ -7,18 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "ThemesViewControllerDelegate.h"
+#include "Themes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ThemesViewController;
-
-@protocol ​ThemesViewControllerDelegate <NSObject>
-
-- (void)themesViewController:(ThemesViewController *)controller didSelectTheme:(UIColor *)selectedTheme;
-
-@end
-
 @interface ThemesViewController : UIViewController
+{
+    IBOutletCollection(UIButton) NSArray *themeButtons;
+}
+
+@property (weak, nonatomic) id <​ThemesViewControllerDelegate> delegate;
+
+@property (retain, nonatomic) Themes* model;
 
 @end
 
