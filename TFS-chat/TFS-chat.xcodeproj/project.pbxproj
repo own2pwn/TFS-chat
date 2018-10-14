@@ -38,6 +38,7 @@
 		DE5D33FD2173314B00B1DC43 /* TFS-chat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TFS-chat-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE5D33FE2173314C00B1DC43 /* ThemesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewController.h; sourceTree = "<group>"; };
 		DE5D33FF2173314C00B1DC43 /* ThemesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemesViewController.m; sourceTree = "<group>"; };
+		DE5D34012173341300B1DC43 /* Themes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Themes.h; sourceTree = "<group>"; };
 		DE9F43B8216A019500B224D4 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */,
+				DE5D34012173341300B1DC43 /* Themes.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "own2pwn.pp.TFS-chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG LOGS_ENABLED";
-				SWIFT_OBJC_BRIDGING_HEADER = "TFS-chat/Module/Themes/TFS-chat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TFS-chat/common/TFS-chat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +466,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "own2pwn.pp.TFS-chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TFS-chat/Module/Themes/TFS-chat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TFS-chat/common/TFS-chat-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
