@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutletCollection(UIButton) NSArray *themeButtons;
 }
 
-@property (weak, nonatomic) id <​ThemesViewControllerDelegate> delegate;
+@property (assign, nonatomic) id <​ThemesViewControllerDelegate> delegate;
 
 @property (retain, nonatomic) Themes* model;
 

@@ -92,11 +92,18 @@ final class ConversationsListViewController: UIViewController {
 
     @IBAction
     private func showThemes(_ sender: UIBarButtonItem) {
-        let themes: ThemesViewController = instantiateController(id: "Themes-vc")
+        // let themes: ThemesViewController = instantiateController(id: "Themes-vc")
+        let themes: ThemesViewController = instantiateController(id: "Themes-vc-swift")
         let provider = ThemeProvider()
 
-        themes.delegate = self
+        //themes.delegate = self
         themes.model = provider.get()
+
+        let module: ThemesModule = themes
+        module.onColorChanged = { [weak self] newColor in
+            self?.updateAppereance(with: newColor)
+            self?.logThemeChanging(selectedTheme: newColor)
+        }
 
         present(themes, animated: true)
     }

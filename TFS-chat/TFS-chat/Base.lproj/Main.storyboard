@@ -70,14 +70,82 @@
                         <viewLayoutGuide key="safeArea" id="DOm-MC-7Ui"/>
                     </view>
                     <connections>
-                        <outletCollection property="themeButtons" destination="PeR-Gm-8Sv" id="6x7-BC-ZfA"/>
-                        <outletCollection property="themeButtons" destination="MLo-On-O2J" id="2KW-zP-JMs"/>
-                        <outletCollection property="themeButtons" destination="d4G-bt-lzl" id="KDt-Vi-lSY"/>
+                        <outletCollection property="themeButtons" destination="PeR-Gm-8Sv" collectionClass="NSMutableArray" id="6x7-BC-ZfA"/>
+                        <outletCollection property="themeButtons" destination="MLo-On-O2J" collectionClass="NSMutableArray" id="2KW-zP-JMs"/>
+                        <outletCollection property="themeButtons" destination="d4G-bt-lzl" collectionClass="NSMutableArray" id="KDt-Vi-lSY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNf-T3-eKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="278" y="-554"/>
+        </scene>
+        <!--Themes-vc-->
+        <scene sceneID="MHA-MR-AiF">
+            <objects>
+                <viewController storyboardIdentifier="Themes-vc-swift" title="Themes-vc" id="2C2-CL-aMA" customClass="ThemesViewController" customModule="TFS_chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M8P-Rs-IL2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rlu-fs-OLI">
+                                <rect key="frame" x="176.66666666666666" y="148" width="61" height="114"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhj-gC-YPG">
+                                        <rect key="frame" x="1" y="0.0" width="59" height="30"/>
+                                        <state key="normal" title="Theme 1"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="8wL-DA-qkM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpA-ae-Bjg">
+                                        <rect key="frame" x="0.0" y="42" width="61" height="30"/>
+                                        <state key="normal" title="Theme 2"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="RFb-4G-aoT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="616-Q5-g5d">
+                                        <rect key="frame" x="0.0" y="84" width="61" height="30"/>
+                                        <state key="normal" title="Theme 3"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="ucU-cp-0lS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-8I-gcJ">
+                                <rect key="frame" x="16" y="36" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="8MF-qF-4ly"/>
+                                    <constraint firstAttribute="width" constant="32" id="HRv-fn-9ew"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="2C2-CL-aMA" eventType="touchUpInside" id="lO4-ak-GsF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jPf-8I-gcJ" firstAttribute="leading" secondItem="M2Y-ZF-uD7" secondAttribute="leading" constant="16" id="H2P-9Q-DDF"/>
+                            <constraint firstItem="Rlu-fs-OLI" firstAttribute="centerX" secondItem="M8P-Rs-IL2" secondAttribute="centerX" id="f1V-Kp-TyG"/>
+                            <constraint firstItem="jPf-8I-gcJ" firstAttribute="top" secondItem="M2Y-ZF-uD7" secondAttribute="top" constant="16" id="pBV-aN-SFh"/>
+                            <constraint firstItem="Rlu-fs-OLI" firstAttribute="top" secondItem="M2Y-ZF-uD7" secondAttribute="top" constant="128" id="taH-8M-bW1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M2Y-ZF-uD7"/>
+                    </view>
+                    <connections>
+                        <outletCollection property="themeButtons" destination="vhj-gC-YPG" collectionClass="NSMutableArray" id="CtT-SD-Wta"/>
+                        <outletCollection property="themeButtons" destination="FpA-ae-Bjg" collectionClass="NSMutableArray" id="mzP-mb-ZZD"/>
+                        <outletCollection property="themeButtons" destination="616-Q5-g5d" collectionClass="NSMutableArray" id="dsK-pn-xUP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GDH-vt-tRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080" y="-554"/>
         </scene>
         <!--Tinkoff Chat-->
         <scene sceneID="kTW-F5-gB1">
