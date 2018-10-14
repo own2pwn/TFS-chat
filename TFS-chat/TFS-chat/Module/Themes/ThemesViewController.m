@@ -84,6 +84,7 @@
             break;
     }
 
+    [[[self navigationController] navigationBar] setBackgroundColor:backgroundColor];
     [[self view] setBackgroundColor:backgroundColor];
     if (_delegate) {
         [_delegate themesViewController:self didSelectTheme:backgroundColor];

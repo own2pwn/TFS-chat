@@ -92,8 +92,8 @@ final class ConversationsListViewController: UIViewController {
 
     @IBAction
     private func showThemes(_ sender: UIBarButtonItem) {
-        // let themes: ThemesViewController = instantiateController(id: "Themes-vc")
-        let themes: ThemesViewController = instantiateController(id: "Themes-vc-swift")
+        // let (nav, themes): (UINavigationController, ThemesViewController) = instantiateNavigationRootController(id: "Themes-vc")
+        let (nav, themes): (UINavigationController, ThemesViewController) = instantiateNavigationRootController(id: "Themes-vc-swift")
         let provider = ThemeProvider()
 
         //themes.delegate = self
@@ -105,10 +105,17 @@ final class ConversationsListViewController: UIViewController {
             self?.logThemeChanging(selectedTheme: newColor)
         }
 
-        present(themes, animated: true)
+        present(nav, animated: true)
     }
 
     // MARK: - Helpers
+
+    private func instantiateNavigationRootController<T: UIViewController>(id: String) -> (UINavigationController, T) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nav = storyboard.instantiateViewController(withIdentifier: id) as? UINavigationController else { fatalError() }
+
+        return (nav, nav.viewControllers.first as! T)
+    }
 
     private func instantiateController<T: UIViewController>(id: String) -> T {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

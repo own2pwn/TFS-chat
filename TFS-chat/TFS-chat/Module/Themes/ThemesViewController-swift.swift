@@ -58,6 +58,7 @@ final class ThemesViewController: UIViewController, ThemesModule {
             fatalError()
         }
 
+        navigationController?.navigationBar.backgroundColor = backgroundColor
         view.backgroundColor = backgroundColor
         onColorChanged?(backgroundColor)
     }

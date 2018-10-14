@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qN1-we-Q8O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qN1-we-Q8O">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,13 +13,13 @@
         <!--Themes View Controller-->
         <scene sceneID="a1a-Nj-rPs">
             <objects>
-                <viewController storyboardIdentifier="Themes-vc" id="oZa-Qt-XmH" customClass="ThemesViewController" sceneMemberID="viewController">
+                <viewController id="oZa-Qt-XmH" customClass="ThemesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rHi-61-PYo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhu-6V-OnP">
-                                <rect key="frame" x="16" y="36" width="32" height="32"/>
+                                <rect key="frame" x="16" y="80" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="0zU-9m-Jks"/>
                                     <constraint firstAttribute="height" constant="32" id="U5F-kM-Zwv"/>
@@ -34,7 +33,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yx2-cC-BmD">
-                                <rect key="frame" x="176.66666666666666" y="148" width="61" height="114"/>
+                                <rect key="frame" x="176.66666666666666" y="192" width="61" height="114"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeR-Gm-8Sv">
                                         <rect key="frame" x="1" y="0.0" width="59" height="30"/>
@@ -69,6 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DOm-MC-7Ui"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iUa-zQ-PgB"/>
                     <connections>
                         <outletCollection property="themeButtons" destination="PeR-Gm-8Sv" collectionClass="NSMutableArray" id="6x7-BC-ZfA"/>
                         <outletCollection property="themeButtons" destination="MLo-On-O2J" collectionClass="NSMutableArray" id="2KW-zP-JMs"/>
@@ -77,18 +77,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNf-T3-eKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="278" y="-554"/>
+            <point key="canvasLocation" x="2089.8550724637685" y="-554.34782608695662"/>
         </scene>
         <!--Themes-vc-->
         <scene sceneID="MHA-MR-AiF">
             <objects>
-                <viewController storyboardIdentifier="Themes-vc-swift" title="Themes-vc" id="2C2-CL-aMA" customClass="ThemesViewController" customModule="TFS_chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Themes-vc" id="2C2-CL-aMA" customClass="ThemesViewController" customModule="TFS_chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M8P-Rs-IL2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rlu-fs-OLI">
-                                <rect key="frame" x="176.66666666666666" y="148" width="61" height="114"/>
+                                <rect key="frame" x="176.66666666666666" y="192" width="61" height="114"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhj-gC-YPG">
                                         <rect key="frame" x="1" y="0.0" width="59" height="30"/>
@@ -114,7 +114,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-8I-gcJ">
-                                <rect key="frame" x="16" y="36" width="32" height="32"/>
+                                <rect key="frame" x="16" y="80" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="8MF-qF-4ly"/>
                                     <constraint firstAttribute="width" constant="32" id="HRv-fn-9ew"/>
@@ -137,6 +137,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M2Y-ZF-uD7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="F5K-ZB-2s4"/>
                     <connections>
                         <outletCollection property="themeButtons" destination="vhj-gC-YPG" collectionClass="NSMutableArray" id="CtT-SD-Wta"/>
                         <outletCollection property="themeButtons" destination="FpA-ae-Bjg" collectionClass="NSMutableArray" id="mzP-mb-ZZD"/>
@@ -145,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDH-vt-tRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="-554"/>
+            <point key="canvasLocation" x="2894.202898550725" y="-554.34782608695662"/>
         </scene>
         <!--Tinkoff Chat-->
         <scene sceneID="kTW-F5-gB1">
@@ -255,7 +256,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="outgoing message cell" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lz-aL-BnX">
-                                                    <rect key="frame" x="231" y="7.9999999999999982" width="167" height="19.333333333333329"/>
+                                                    <rect key="frame" x="231.33333333333337" y="7.9999999999999982" width="166.66666666666663" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -433,6 +434,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9P6-u5-SHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-570" y="130"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6pV-ej-LKz">
+            <objects>
+                <navigationController storyboardIdentifier="Themes-vc-swift" automaticallyAdjustsScrollViewInsets="NO" id="fTo-ZO-uVA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L6m-1P-hNW">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2C2-CL-aMA" kind="relationship" relationship="rootViewController" id="H9Y-3E-56j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZG-L9-OYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="188"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KsN-fZ-bHQ">
+            <objects>
+                <navigationController storyboardIdentifier="Themes-vc" automaticallyAdjustsScrollViewInsets="NO" id="Z5f-1L-hpK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AGq-go-48J">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oZa-Qt-XmH" kind="relationship" relationship="rootViewController" id="0TJ-Uk-0jj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4k-W6-rGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1258" y="-554"/>
         </scene>
     </scenes>
     <resources>

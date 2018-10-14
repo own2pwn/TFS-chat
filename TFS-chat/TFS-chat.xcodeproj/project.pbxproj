@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B913601E21736DBD00B31BB8 /* ThemesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5D33FF2173314C00B1DC43 /* ThemesViewController.m */; };
-		B913601F21736DCD00B31BB8 /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
 		B91BA099217361F2002A90EF /* AppThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA098217361F2002A90EF /* AppThemeManager.swift */; };
 		B93EBC5F21734A3900A86229 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EBC5E21734A3900A86229 /* ThemeProvider.swift */; };
 		B93EBC6221734C1B00A86229 /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = B93EBC6121734C1B00A86229 /* Themes.m */; };
@@ -28,6 +27,7 @@
 		DEBD6609216A7B6400019ACD /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD6608216A7B6400019ACD /* MessageCell.swift */; };
 		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
+		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -280,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B913601F21736DCD00B31BB8 /* ThemesViewController-swift.swift in Sources */,
+				DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */,
 				B91BA099217361F2002A90EF /* AppThemeManager.swift in Sources */,
 				DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */,
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
