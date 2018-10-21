@@ -15,6 +15,8 @@ final class AppThemeManager {
 
     private let defaults = UserDefaults.standard
 
+    private let queue = DispatchQueue(label: "pp.service.background", attributes: .concurrent)
+
     // MARK: - Interface
 
     func setTheme(_ color: UIColor) {
@@ -33,7 +35,10 @@ final class AppThemeManager {
     // MARK: - Helpers
 
     private func saveColor(_ color: UIColor) {
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
-        defaults.set(colorData, forKey: kThemeColor)
+        queue.async {
+            let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
+            self.defaults.set(colorData, forKey: self.kThemeColor)
+            self.defaults.synchronize()
+        }
     }
 }

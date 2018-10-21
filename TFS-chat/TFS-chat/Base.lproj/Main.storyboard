@@ -483,8 +483,10 @@
                         <outlet property="avatarImageView" destination="Ngf-yQ-fEG" id="9Gk-9u-Ehj"/>
                         <outlet property="changeAvatarButton" destination="ItN-7M-DiU" id="ohP-zK-RaX"/>
                         <outlet property="editButton" destination="ahx-eV-JSe" id="Ydu-Xa-AlX"/>
+                        <outlet property="gcdButton" destination="gj9-KL-YlY" id="vNa-dL-nPf"/>
                         <outlet property="nameLabel" destination="yOS-T5-8n7" id="atk-Vt-WfJ"/>
                         <outlet property="nameTextField" destination="wze-4Z-opS" id="rrh-G8-Ulv"/>
+                        <outlet property="operationButton" destination="YDH-C3-75e" id="ELM-UD-pPV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

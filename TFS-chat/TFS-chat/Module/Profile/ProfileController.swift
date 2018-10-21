@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct UserInfoViewModel {
-    let name: String
+struct UserInfoViewModel: Hashable {
+    let name: String?
     let about: String?
     let avatar: UIImage?
 }
@@ -17,23 +17,65 @@ struct UserInfoViewModel {
 protocol ProfileControllerViewModel: class {
     var model: UserInfoViewModel? { get }
 
-    func setName(_ name: String)
-    func setAbout(_ about: String)
+    var saveButtonEnabledState: ((Bool) -> Void)? { get set }
+
+    func setName(_ name: String?)
+    func setAbout(_ about: String?)
     func setAvatar(_ avatar: UIImage)
 }
 
 final class ProfileControllerViewModelImp: ProfileControllerViewModel {
     // MARK: - Members
 
-    var model: UserInfoViewModel?
+    var model: UserInfoViewModel? {
+        didSet {
+            if model == nil {
+                saveButtonEnabledState?(false)
+            } else if oldValue != model {
+                saveButtonEnabledState?(true)
+            }
+        }
+    }
+
+    var saveButtonEnabledState: ((Bool) -> Void)?
 
     // MARK: - Methods
 
-    func setName(_ name: String) {}
+    func setName(_ name: String?) {
+        guard let existing = model else {
+            model = UserInfoViewModel(name: name, about: nil, avatar: nil)
+            return
+        }
 
-    func setAbout(_ about: String) {}
+        model = UserInfoViewModel(name: name, about: existing.about, avatar: existing.avatar)
+        nilModelIfNeeded()
+    }
 
-    func setAvatar(_ avatar: UIImage) {}
+    func setAbout(_ about: String?) {
+        guard let existing = model else {
+            model = UserInfoViewModel(name: nil, about: about, avatar: nil)
+            return
+        }
+
+        model = UserInfoViewModel(name: existing.name, about: about, avatar: existing.avatar)
+        nilModelIfNeeded()
+    }
+
+    func setAvatar(_ avatar: UIImage) {
+        guard let existing = model else {
+            model = UserInfoViewModel(name: nil, about: nil, avatar: avatar)
+            return
+        }
+
+        model = UserInfoViewModel(name: existing.name, about: existing.about, avatar: avatar)
+        nilModelIfNeeded()
+    }
+
+    private func nilModelIfNeeded() {
+        if model?.name == nil &&
+            model?.avatar == nil &&
+            model?.about == nil { model = nil }
+    }
 }
 
 final class ProfileController: UIViewController {
@@ -63,6 +105,12 @@ final class ProfileController: UIViewController {
     @IBOutlet
     private var aboutYouTextView: UITextView!
 
+    @IBOutlet
+    private var gcdButton: UIButton!
+
+    @IBOutlet
+    private var operationButton: UIButton!
+
     // MARK: - Members
 
     private let viewModel:
@@ -80,11 +128,23 @@ final class ProfileController: UIViewController {
     // MARK: - Methods
 
     private func setupModule() {
+        setupViewModel()
         nameTextField.delegate = self
+        aboutYouTextView.delegate = self
 
         let editingControls: [UIView] = [nameTextField, aboutYouPlaceholderLabel,
                                          aboutYouTextView, changeAvatarButton]
         editingControls.forEach { $0.alpha = 0 }
+    }
+
+    private func setupViewModel() {
+        viewModel.saveButtonEnabledState = { [weak self] enabled in
+            guard let `self` = self else { return }
+            let btns: [UIButton] = [self.gcdButton, self.operationButton]
+            btns.forEach { $0.isEnabled = enabled }
+
+            print("^ enabled: \(enabled)")
+        }
     }
 
     private func setupHeader() {
@@ -227,7 +287,32 @@ extension ProfileController: UITextFieldDelegate {
     }
 
     private func handleTextFieldText(_ text: String?) {
-        
+        let value = textOrNilIfEmpty(text)
+        viewModel.setName(value)
+    }
+
+    private func textOrNilIfEmpty(_ text: String?) -> String? {
+        if let textValue = text, textValue.isEmpty {
+            return nil
+        } else {
+            return text
+        }
+    }
+}
+
+extension ProfileController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        handleTextViewText(textView.text)
+    }
+
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        handleTextViewText(textView.text)
+        return true
+    }
+
+    private func handleTextViewText(_ text: String?) {
+        let value = textOrNilIfEmpty(text)
+        viewModel.setAbout(value)
     }
 }
 
@@ -239,6 +324,8 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         if let pickedImage = pickedImage as? UIImage {
             avatarImageView.image = pickedImage
             avatarImageView.contentMode = .scaleAspectFill
+
+            viewModel.setAvatar(pickedImage)
         }
         dismiss(animated: true, completion: nil)
     }
