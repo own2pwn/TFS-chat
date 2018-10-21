@@ -8,6 +8,34 @@
 
 import UIKit
 
+struct UserInfoViewModel {
+    let name: String
+    let about: String?
+    let avatar: UIImage?
+}
+
+protocol ProfileControllerViewModel: class {
+    var model: UserInfoViewModel? { get }
+
+    func setName(_ name: String)
+    func setAbout(_ about: String)
+    func setAvatar(_ avatar: UIImage)
+}
+
+final class ProfileControllerViewModelImp: ProfileControllerViewModel {
+    // MARK: - Members
+
+    var model: UserInfoViewModel?
+
+    // MARK: - Methods
+
+    func setName(_ name: String) {}
+
+    func setAbout(_ about: String) {}
+
+    func setAvatar(_ avatar: UIImage) {}
+}
+
 final class ProfileController: UIViewController {
     // MARK: - Outlets
 
@@ -20,15 +48,44 @@ final class ProfileController: UIViewController {
     @IBOutlet
     private var editButton: UIButton!
 
+    @IBOutlet
+    private var nameLabel: UILabel!
+
+    @IBOutlet
+    private var aboutYouLabel: UILabel!
+
+    @IBOutlet
+    private var nameTextField: UITextField!
+
+    @IBOutlet
+    private var aboutYouPlaceholderLabel: UILabel!
+
+    @IBOutlet
+    private var aboutYouTextView: UITextView!
+
+    // MARK: - Members
+
+    private let viewModel:
+        ProfileControllerViewModel = ProfileControllerViewModelImp()
+
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupModule()
         setupEditButton()
     }
 
     // MARK: - Methods
+
+    private func setupModule() {
+        nameTextField.delegate = self
+
+        let editingControls: [UIView] = [nameTextField, aboutYouPlaceholderLabel,
+                                         aboutYouTextView, changeAvatarButton]
+        editingControls.forEach { $0.alpha = 0 }
+    }
 
     private func setupHeader() {
         setupChangeAvatarButton()
@@ -62,6 +119,8 @@ final class ProfileController: UIViewController {
 
         let borderColor = #colorLiteral(red: 0.1490196078, green: 0.1490196078, blue: 0.1490196078, alpha: 1)
         editButton.layer.borderColor = borderColor.cgColor
+
+        editButton.addTarget(self, action: #selector(toggleEditMode), for: .touchUpInside)
     }
 
     // MARK: - Layout
@@ -74,9 +133,29 @@ final class ProfileController: UIViewController {
 
     // MARK: - Actions
 
+    @objc
+    private func toggleEditMode() {
+        setEditing(!isEditing, animated: true)
+
+        let editingControlsAlpha: CGFloat = isEditing ? 1 : 0
+        let infoControls: [UIView] = [nameLabel, aboutYouLabel]
+        let editingControls: [UIView] = [nameTextField, aboutYouPlaceholderLabel,
+                                         aboutYouTextView, changeAvatarButton]
+
+        UIView.animate(withDuration: 0.3) {
+            infoControls.forEach { $0.alpha = 1 - editingControlsAlpha }
+            editingControls.forEach { $0.alpha = editingControlsAlpha }
+        }
+    }
+
     @IBAction
-    func pickImage() {
-        print("Выбери изображение профиля")
+    private func handleGCDTap() {}
+
+    @IBAction
+    private func handleOperationTap() {}
+
+    @IBAction
+    private func pickImage() {
         let alertController = UIAlertController(title: "Выбери изображение профиля",
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
@@ -108,7 +187,8 @@ final class ProfileController: UIViewController {
         present(alertController, animated: true)
     }
 
-    @IBAction func dismiss() {
+    @IBAction
+    private func dismiss() {
         dismiss(animated: true)
     }
 
@@ -121,6 +201,33 @@ final class ProfileController: UIViewController {
         picker.allowsEditing = true
 
         present(picker, animated: true)
+    }
+
+    private func buildUserInfoModel() -> UserInfoViewModel? {
+        guard
+            isEditing,
+            let name = nameTextField.text else { return nil }
+
+        let about = aboutYouTextView.text
+        let avatar = avatarImageView.image
+
+        return UserInfoViewModel(name: name, about: about, avatar: avatar)
+    }
+}
+
+extension ProfileController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        handleTextFieldText(textField.text)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleTextFieldText(textField.text)
+
+        return true
+    }
+
+    private func handleTextFieldText(_ text: String?) {
+        
     }
 }
 
