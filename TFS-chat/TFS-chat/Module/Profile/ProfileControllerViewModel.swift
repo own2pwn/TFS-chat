@@ -8,66 +8,77 @@
 
 import UIKit
 
-protocol ProfileControllerViewModel: class {
+protocol ProfileControllerViewModelOutput: class {
+    var saveButtonEnabled: ((Bool) -> Void)? { get set }
+}
+
+protocol ProfileControllerViewModel: ProfileControllerViewModelOutput {
     var model: UserInfoViewModel? { get }
 
-    var saveButtonEnabledState: ((Bool) -> Void)? { get set }
+    var name: String? { get set }
+    var aboutYou: String? { get set }
+    var image: UIImage? { get set }
 
-    func setName(_ name: String?)
-    func setAbout(_ about: String?)
-    func setAvatar(_ avatar: UIImage)
+    func endEditing()
 }
 
 final class ProfileControllerViewModelImp: ProfileControllerViewModel {
+    // MARK: - Output
+
+    var saveButtonEnabled: ((Bool) -> Void)?
+
     // MARK: - Members
 
-    var model: UserInfoViewModel? {
-        didSet {
-            if model == nil {
-                saveButtonEnabledState?(false)
-            } else if oldValue != model {
-                saveButtonEnabledState?(true)
-            }
-        }
+    var model: UserInfoViewModel?
+
+    var name: String? {
+        didSet { updateOutput() }
     }
 
-    var saveButtonEnabledState: ((Bool) -> Void)?
+    var aboutYou: String? {
+        didSet { updateOutput() }
+    }
+
+    var image: UIImage? {
+        didSet { updateOutput() }
+    }
 
     // MARK: - Methods
 
-    func setName(_ name: String?) {
-        guard let existing = model else {
-            model = UserInfoViewModel(name: name, about: nil, avatar: nil)
-            return
-        }
-
-        model = UserInfoViewModel(name: name, about: existing.about, avatar: existing.avatar)
-        nilModelIfNeeded()
+    func endEditing() {
+        model = nil
+        saveButtonEnabled?(false)
     }
 
-    func setAbout(_ about: String?) {
-        guard let existing = model else {
-            model = UserInfoViewModel(name: nil, about: about, avatar: nil)
+    // MARK: - Helpers
+
+    private func updateOutput() {
+        let nameValue = textOrNilIfEmpty(name)
+        let aboutYouValue = textOrNilIfEmpty(aboutYou)
+
+        guard let name = nameValue else {
+            model = nil
+            saveButtonEnabled?(false)
             return
         }
-
-        model = UserInfoViewModel(name: existing.name, about: about, avatar: existing.avatar)
-        nilModelIfNeeded()
-    }
-
-    func setAvatar(_ avatar: UIImage) {
-        guard let existing = model else {
-            model = UserInfoViewModel(name: nil, about: nil, avatar: avatar)
-            return
+        let oldModel = model
+        model = UserInfoViewModel(name: name, about: aboutYouValue, imageData: jpegData(from: image))
+        if oldModel != model {
+            saveButtonEnabled?(true)
         }
-
-        model = UserInfoViewModel(name: existing.name, about: existing.about, avatar: avatar)
-        nilModelIfNeeded()
     }
 
-    private func nilModelIfNeeded() {
-        if model?.name == nil &&
-            model?.avatar == nil &&
-            model?.about == nil { model = nil }
+    private func jpegData(from image: UIImage?) -> Data? {
+        guard let image = image else { return nil }
+
+        return image.jpegData(compressionQuality: 0.9)
+    }
+
+    private func textOrNilIfEmpty(_ text: String?) -> String? {
+        if let textValue = text, textValue.isEmpty {
+            return nil
+        } else {
+            return text
+        }
     }
 }

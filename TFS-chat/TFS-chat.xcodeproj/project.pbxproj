@@ -11,6 +11,7 @@
 		B91BA099217361F2002A90EF /* AppThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA098217361F2002A90EF /* AppThemeManager.swift */; };
 		B93EBC5F21734A3900A86229 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93EBC5E21734A3900A86229 /* ThemeProvider.swift */; };
 		B93EBC6221734C1B00A86229 /* Themes.m in Sources */ = {isa = PBXBuildFile; fileRef = B93EBC6121734C1B00A86229 /* Themes.m */; };
+		DE0AFE0E217CE7720061987D /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0AFE0D217CE7720061987D /* UserInfoViewModel.swift */; };
 		DE14648B216108ED00344D4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14648A216108ED00344D4D /* Constants.swift */; };
 		DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */; };
 		DE3B87722157ADE300D9DA8D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B87712157ADE300D9DA8D /* ProfileController.swift */; };
@@ -38,6 +39,7 @@
 		B93EBC6021734C1B00A86229 /* Themes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Themes.h; sourceTree = "<group>"; };
 		B93EBC6121734C1B00A86229 /* Themes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Themes.m; sourceTree = "<group>"; };
 		B950153C2173402200FDE8F3 /* ThemesViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewControllerDelegate.h; sourceTree = "<group>"; };
+		DE0AFE0D217CE7720061987D /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		DE14648A216108ED00344D4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE3B876C2157ADE300D9DA8D /* TFS-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TFS-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3B876F2157ADE300D9DA8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */,
+				DE0AFE0D217CE7720061987D /* UserInfoViewModel.swift */,
 				B93EBC6021734C1B00A86229 /* Themes.h */,
 				B93EBC6121734C1B00A86229 /* Themes.m */,
 			);
@@ -300,6 +303,7 @@
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
+				DE0AFE0E217CE7720061987D /* UserInfoViewModel.swift in Sources */,
 				B913601E21736DBD00B31BB8 /* ThemesViewController.m in Sources */,
 				DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */,
 			);

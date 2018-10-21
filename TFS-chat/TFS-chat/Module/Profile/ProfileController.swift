@@ -8,12 +8,6 @@
 
 import UIKit
 
-struct UserInfoViewModel: Hashable {
-    let name: String?
-    let about: String?
-    let avatar: UIImage?
-}
-
 final class ProfileController: UIViewController {
     // MARK: - Outlets
 
@@ -74,7 +68,7 @@ final class ProfileController: UIViewController {
     }
 
     private func setupViewModel() {
-        viewModel.saveButtonEnabledState = { [weak self] enabled in
+        viewModel.saveButtonEnabled = { [weak self] enabled in
             guard let `self` = self else { return }
             let btns: [UIButton] = [self.gcdButton, self.operationButton]
             btns.forEach { $0.isEnabled = enabled }
@@ -142,6 +136,10 @@ final class ProfileController: UIViewController {
             infoControls.forEach { $0.alpha = 1 - editingControlsAlpha }
             editingControls.forEach { $0.alpha = editingControlsAlpha }
         }
+
+        if !isEditing {
+            viewModel.endEditing()
+        }
     }
 
     @IBAction
@@ -198,17 +196,6 @@ final class ProfileController: UIViewController {
 
         present(picker, animated: true)
     }
-
-    private func buildUserInfoModel() -> UserInfoViewModel? {
-        guard
-            isEditing,
-            let name = nameTextField.text else { return nil }
-
-        let about = aboutYouTextView.text
-        let avatar = avatarImageView.image
-
-        return UserInfoViewModel(name: name, about: about, avatar: avatar)
-    }
 }
 
 extension ProfileController: UITextFieldDelegate {
@@ -223,16 +210,7 @@ extension ProfileController: UITextFieldDelegate {
     }
 
     private func handleTextFieldText(_ text: String?) {
-        let value = textOrNilIfEmpty(text)
-        viewModel.setName(value)
-    }
-
-    private func textOrNilIfEmpty(_ text: String?) -> String? {
-        if let textValue = text, textValue.isEmpty {
-            return nil
-        } else {
-            return text
-        }
+        viewModel.name = text
     }
 }
 
@@ -247,8 +225,7 @@ extension ProfileController: UITextViewDelegate {
     }
 
     private func handleTextViewText(_ text: String?) {
-        let value = textOrNilIfEmpty(text)
-        viewModel.setAbout(value)
+        viewModel.aboutYou = text
     }
 }
 
@@ -261,7 +238,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
             avatarImageView.image = pickedImage
             avatarImageView.contentMode = .scaleAspectFill
 
-            viewModel.setAvatar(pickedImage)
+            viewModel.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
     }
