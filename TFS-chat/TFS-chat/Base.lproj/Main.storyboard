@@ -10,6 +10,144 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Themes View Controller-->
+        <scene sceneID="a1a-Nj-rPs">
+            <objects>
+                <viewController id="oZa-Qt-XmH" customClass="ThemesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rHi-61-PYo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhu-6V-OnP">
+                                <rect key="frame" x="16" y="80" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="0zU-9m-Jks"/>
+                                    <constraint firstAttribute="height" constant="32" id="U5F-kM-Zwv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="oZa-Qt-XmH" eventType="touchUpInside" id="Tix-bD-tUT"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="yx2-cC-BmD">
+                                <rect key="frame" x="176.66666666666666" y="192" width="61" height="114"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeR-Gm-8Sv">
+                                        <rect key="frame" x="1" y="0.0" width="59" height="30"/>
+                                        <state key="normal" title="Theme 1"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="oZa-Qt-XmH" eventType="touchUpInside" id="HQk-E4-MkD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLo-On-O2J">
+                                        <rect key="frame" x="0.0" y="42" width="61" height="30"/>
+                                        <state key="normal" title="Theme 2"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="oZa-Qt-XmH" eventType="touchUpInside" id="YLC-gl-NpS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-bt-lzl">
+                                        <rect key="frame" x="0.0" y="84" width="61" height="30"/>
+                                        <state key="normal" title="Theme 3"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="oZa-Qt-XmH" eventType="touchUpInside" id="IdY-Hy-DYy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yx2-cC-BmD" firstAttribute="top" secondItem="DOm-MC-7Ui" secondAttribute="top" constant="128" id="Ogy-DU-tWn"/>
+                            <constraint firstItem="yx2-cC-BmD" firstAttribute="centerX" secondItem="rHi-61-PYo" secondAttribute="centerX" id="TWM-pn-X2G"/>
+                            <constraint firstItem="uhu-6V-OnP" firstAttribute="top" secondItem="DOm-MC-7Ui" secondAttribute="top" constant="16" id="cML-cS-Y4O"/>
+                            <constraint firstItem="uhu-6V-OnP" firstAttribute="leading" secondItem="DOm-MC-7Ui" secondAttribute="leading" constant="16" id="fst-IE-3Fm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DOm-MC-7Ui"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iUa-zQ-PgB"/>
+                    <connections>
+                        <outletCollection property="themeButtons" destination="PeR-Gm-8Sv" collectionClass="NSMutableArray" id="6x7-BC-ZfA"/>
+                        <outletCollection property="themeButtons" destination="MLo-On-O2J" collectionClass="NSMutableArray" id="2KW-zP-JMs"/>
+                        <outletCollection property="themeButtons" destination="d4G-bt-lzl" collectionClass="NSMutableArray" id="KDt-Vi-lSY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qNf-T3-eKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2089.8550724637685" y="-554.34782608695662"/>
+        </scene>
+        <!--Themes-vc-->
+        <scene sceneID="MHA-MR-AiF">
+            <objects>
+                <viewController title="Themes-vc" id="2C2-CL-aMA" customClass="ThemesViewController" customModule="TFS_chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M8P-Rs-IL2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Rlu-fs-OLI">
+                                <rect key="frame" x="176.66666666666666" y="192" width="61" height="114"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhj-gC-YPG">
+                                        <rect key="frame" x="1" y="0.0" width="59" height="30"/>
+                                        <state key="normal" title="Theme 1"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="8wL-DA-qkM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpA-ae-Bjg">
+                                        <rect key="frame" x="0.0" y="42" width="61" height="30"/>
+                                        <state key="normal" title="Theme 2"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="RFb-4G-aoT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="616-Q5-g5d">
+                                        <rect key="frame" x="0.0" y="84" width="61" height="30"/>
+                                        <state key="normal" title="Theme 3"/>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="2C2-CL-aMA" eventType="touchUpInside" id="ucU-cp-0lS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-8I-gcJ">
+                                <rect key="frame" x="16" y="80" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="8MF-qF-4ly"/>
+                                    <constraint firstAttribute="width" constant="32" id="HRv-fn-9ew"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.111818932" green="0.11183650050000001" blue="0.1118125319" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="2C2-CL-aMA" eventType="touchUpInside" id="lO4-ak-GsF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jPf-8I-gcJ" firstAttribute="leading" secondItem="M2Y-ZF-uD7" secondAttribute="leading" constant="16" id="H2P-9Q-DDF"/>
+                            <constraint firstItem="Rlu-fs-OLI" firstAttribute="centerX" secondItem="M8P-Rs-IL2" secondAttribute="centerX" id="f1V-Kp-TyG"/>
+                            <constraint firstItem="jPf-8I-gcJ" firstAttribute="top" secondItem="M2Y-ZF-uD7" secondAttribute="top" constant="16" id="pBV-aN-SFh"/>
+                            <constraint firstItem="Rlu-fs-OLI" firstAttribute="top" secondItem="M2Y-ZF-uD7" secondAttribute="top" constant="128" id="taH-8M-bW1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M2Y-ZF-uD7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="F5K-ZB-2s4"/>
+                    <connections>
+                        <outletCollection property="themeButtons" destination="vhj-gC-YPG" collectionClass="NSMutableArray" id="CtT-SD-Wta"/>
+                        <outletCollection property="themeButtons" destination="FpA-ae-Bjg" collectionClass="NSMutableArray" id="mzP-mb-ZZD"/>
+                        <outletCollection property="themeButtons" destination="616-Q5-g5d" collectionClass="NSMutableArray" id="dsK-pn-xUP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GDH-vt-tRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894.202898550725" y="-554.34782608695662"/>
+        </scene>
         <!--Tinkoff Chat-->
         <scene sceneID="kTW-F5-gB1">
             <objects>
@@ -82,7 +220,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iIY-p4-jp7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="udu-yv-CKj"/>
+                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="udu-yv-CKj">
+                        <barButtonItem key="leftBarButtonItem" title="Themes" id="cuU-Qt-33Y">
+                            <connections>
+                                <action selector="showThemes:" destination="O8a-fd-Xt3" id="KzK-er-fqu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KAw-RA-ZpW" id="eeM-fS-57c"/>
                         <segue destination="gbi-RS-y1u" kind="show" identifier="idShowDialog" id="OTu-N2-hSL"/>
@@ -345,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152.17391304347828" y="850.27173913043487"/>
+            <point key="canvasLocation" x="278" y="825"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="auQ-Ja-Klc">
@@ -364,6 +508,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9P6-u5-SHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-570" y="130"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6pV-ej-LKz">
+            <objects>
+                <navigationController storyboardIdentifier="Themes-vc-swift" automaticallyAdjustsScrollViewInsets="NO" id="fTo-ZO-uVA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L6m-1P-hNW">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2C2-CL-aMA" kind="relationship" relationship="rootViewController" id="H9Y-3E-56j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZG-L9-OYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="188"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KsN-fZ-bHQ">
+            <objects>
+                <navigationController storyboardIdentifier="Themes-vc" automaticallyAdjustsScrollViewInsets="NO" id="Z5f-1L-hpK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AGq-go-48J">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oZa-Qt-XmH" kind="relationship" relationship="rootViewController" id="0TJ-Uk-0jj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4k-W6-rGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1258" y="-554"/>
         </scene>
     </scenes>
     <resources>

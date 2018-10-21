@@ -46,6 +46,10 @@ final class ConversationsListViewController: UIViewController {
         dialog.title = model.name
     }
 
+    // MARK: - Members
+
+    private lazy var themeManager = AppThemeManager()
+
     // MARK: - Methods
 
     private func addBarButton() {
@@ -82,9 +86,56 @@ final class ConversationsListViewController: UIViewController {
 
     @objc
     private func showProfile() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profile = storyboard.instantiateViewController(withIdentifier: "Profile-vc")
+        let profile = instantiateController(id: "Profile-vc")
         present(profile, animated: true)
+    }
+
+    @IBAction
+    private func showThemes(_ sender: UIBarButtonItem) {
+        // let (nav, themes): (UINavigationController, ThemesViewController) = instantiateNavigationRootController(id: "Themes-vc")
+        let (nav, themes): (UINavigationController, ThemesViewController) = instantiateNavigationRootController(id: "Themes-vc-swift")
+        let provider = ThemeProvider()
+
+        //themes.delegate = self
+        themes.model = provider.get()
+
+        let module: ThemesModule = themes
+        module.onColorChanged = { [weak self] newColor in
+            self?.updateAppereance(with: newColor)
+            self?.logThemeChanging(selectedTheme: newColor)
+        }
+
+        present(nav, animated: true)
+    }
+
+    // MARK: - Helpers
+
+    private func instantiateNavigationRootController<T: UIViewController>(id: String) -> (UINavigationController, T) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nav = storyboard.instantiateViewController(withIdentifier: id) as? UINavigationController else { fatalError() }
+
+        return (nav, nav.viewControllers.first as! T)
+    }
+
+    private func instantiateController<T: UIViewController>(id: String) -> T {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        return storyboard.instantiateViewController(withIdentifier: id) as! T
+    }
+}
+
+extension ConversationsListViewController: ​ThemesViewControllerDelegate {
+    func themesViewController(_ controller: ThemesViewController, didSelectTheme selectedTheme: UIColor) {
+        updateAppereance(with: selectedTheme)
+        logThemeChanging(selectedTheme: selectedTheme)
+    }
+
+    private func updateAppereance(with color: UIColor) {
+        themeManager.setTheme(color)
+    }
+
+    private func logThemeChanging(selectedTheme: UIColor) {
+        print("did change theme color to \(selectedTheme)")
     }
 }
 
