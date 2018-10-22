@@ -185,8 +185,8 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         switch button {
         case .gcd:
             return GCDWorker()
-        default:
-            fatalError()
+        case .operation:
+            return OperationWorker()
         }
     }
 
