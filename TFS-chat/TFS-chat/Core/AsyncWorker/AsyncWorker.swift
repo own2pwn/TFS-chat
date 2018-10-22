@@ -10,9 +10,9 @@ import Foundation
 
 typealias VoidBlock = () -> Void
 
-typealias WorkerBlock = () -> Bool
+typealias WorkerBlock = () throws -> Bool
 
-typealias WorkerCompletion = (Bool) -> Void
+typealias WorkerCompletion = (Bool, Error?) -> Void
 
 protocol AsyncWorker: class {
     func perform(_ job: @escaping VoidBlock)

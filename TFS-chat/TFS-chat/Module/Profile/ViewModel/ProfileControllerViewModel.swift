@@ -14,4 +14,6 @@ protocol ProfileControllerViewModel: ProfileControllerViewModelOutput {
     var image: UIImage? { get set }
 
     func endEditing()
+    func saveDataGCD()
+    func saveDataOperation()
 }

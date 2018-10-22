@@ -10,4 +10,6 @@ import Foundation
 
 protocol ProfileControllerViewModelOutput: class {
     var saveButtonEnabled: ((Bool) -> Void)? { get set }
+
+    var viewModelUpdated: VoidBlock? { get set }
 }

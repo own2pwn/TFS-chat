@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserInfoViewModel: Hashable {
+struct UserInfoModel: Hashable {
     let name: String
     let about: String?
     let imageData: Data?
