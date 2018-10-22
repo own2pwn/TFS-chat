@@ -15,7 +15,9 @@ final class AppThemeManager {
 
     private let defaults = UserDefaults.standard
 
-    private let queue = DispatchQueue(label: "pp.service.background", attributes: .concurrent)
+    private let worker: AsyncWorker = {
+        GCDWorker()
+    }()
 
     // MARK: - Interface
 
@@ -35,10 +37,11 @@ final class AppThemeManager {
     // MARK: - Helpers
 
     private func saveColor(_ color: UIColor) {
-        queue.async {
+        let job = {
             let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
             self.defaults.set(colorData, forKey: self.kThemeColor)
-            self.defaults.synchronize()
         }
+
+        worker.perform(job)
     }
 }

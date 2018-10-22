@@ -18,6 +18,8 @@
 		DE3B87752157ADE300D9DA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87732157ADE300D9DA8D /* Main.storyboard */; };
 		DE3B87772157ADE400D9DA8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87762157ADE400D9DA8D /* Assets.xcassets */; };
 		DE3B877A2157ADE400D9DA8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */; };
+		DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */; };
+		DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD1217DE158006AC274 /* GCDWorker.swift */; };
 		DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F43B8216A019500B224D4 /* ConversationsListViewController.swift */; };
 		DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */; };
 		DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */; };
@@ -51,6 +53,8 @@
 		DE5D33FD2173314B00B1DC43 /* TFS-chat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TFS-chat-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE5D33FE2173314C00B1DC43 /* ThemesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewController.h; sourceTree = "<group>"; };
 		DE5D33FF2173314C00B1DC43 /* ThemesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemesViewController.m; sourceTree = "<group>"; };
+		DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncWorker.swift; sourceTree = "<group>"; };
+		DE6D3CD1217DE158006AC274 /* GCDWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDWorker.swift; sourceTree = "<group>"; };
 		DE9F43B8216A019500B224D4 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -119,6 +123,15 @@
 			path = Themes;
 			sourceTree = "<group>";
 		};
+		DE6D3CD0217DE145006AC274 /* AsyncWorker */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */,
+				DE6D3CD1217DE158006AC274 /* GCDWorker.swift */,
+			);
+			path = AsyncWorker;
+			sourceTree = "<group>";
+		};
 		DE8F4C902157B83800B14E76 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +193,7 @@
 		DEBD6600216A6B9300019ACD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DE6D3CD0217DE145006AC274 /* AsyncWorker */,
 				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
 				DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */,
 				B93EBC5E21734A3900A86229 /* ThemeProvider.swift */,
@@ -300,7 +314,9 @@
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
 				DEBD6609216A7B6400019ACD /* MessageCell.swift in Sources */,
 				DEDFCA44217CC6C6009C056C /* ProfileControllerViewModel.swift in Sources */,
+				DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
+				DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DE0AFE0E217CE7720061987D /* UserInfoViewModel.swift in Sources */,
