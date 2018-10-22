@@ -41,9 +41,9 @@ final class UserInfoDataManager {
 
     // MARK: - Interface
 
-    func update(_ newInfo: UserInfoModel) {
-        let nameUpdateBlock = getStringUpdateBlock(key: nameKey, newValue: newInfo.name)
-        let aboutYouUpdateBlock = getStringUpdateBlock(key: aboutYouKey, newValue: newInfo.about)
+    func update(_ newInfo: UserInfoModel, completion: @escaping (Error?) -> Void) {
+        let job = buildJobBlock(newInfo)
+        worker.perform(job, completion: completion)
     }
 
     // MARK: - Init
@@ -54,30 +54,24 @@ final class UserInfoDataManager {
 
     // MARK: - Helpers
 
-    private func getImageUpdateBlock(image: Data?) {
-        // if no data => remove file
+    private func buildJobBlock(_ model: UserInfoModel) -> WorkerBlock {
+        let nameUpdateBlock = getStringUpdateBlock(key: nameKey, newValue: model.name)
+        let aboutYouUpdateBlock = getStringUpdateBlock(key: aboutYouKey, newValue: model.about)
+        let imageUpdateBlock = getImageUpdateBlock(model.imageData)
 
-        guard let imageURL = defaults.value(forKey: imageKey) as? URL else {
-            do {
-                let fm = FileManager.default
-                let docsFolder = try fm.url(for: .documentDirectory, in: .userDomainMask,
-                                            appropriateFor: nil, create: false)
-
-                let imagePath = docsFolder.appendingPathComponent("avatar.jpg")
-
-            } catch {}
-        }
-    }
-
-    private func removeAvatarBlock() -> WorkerBlock {
-        guard let imageURL = defaults.value(forKey: imageKey) as? URL else {
-            let block = { true }
-            return block
+        let block: WorkerBlock = { [nameBlock = nameUpdateBlock, aboutBlock = aboutYouUpdateBlock, imageBlock = imageUpdateBlock] in
+            if let nameBlock = nameBlock {
+                nameBlock()
+            }
+            if let aboutBlock = aboutBlock {
+                aboutBlock()
+            }
+            if let imageBlock = imageBlock {
+                try imageBlock()
+            }
         }
 
-        let block
-
-        finder.delete(filePath: imageURL)
+        return block
     }
 
     private func getStringUpdateBlock(key: String, newValue: String?) -> VoidBlock? {
@@ -99,8 +93,46 @@ final class UserInfoDataManager {
         return block
     }
 
-    private func buildJobBlock() -> WorkerBlock {
-        return { false }
+    // MARK: - Image
+
+    private func getImageUpdateBlock(_ imageData: Data?) -> WorkerBlock? {
+        guard let imagePath = defaults.value(forKey: imageKey) as? URL else {
+            if let data = imageData {
+                return saveImageBlock(data)
+            }
+            return nil
+        }
+        guard let imageData = imageData else {
+            return removeImageBlock(imagePath)
+        }
+
+        return updateImageBlock(imageData, imagePath: imagePath)
+    }
+
+    private func removeImageBlock(_ imagePath: URL) -> WorkerBlock? {
+        let block = {
+            try self.finder.delete(filePath: imagePath)
+        }
+
+        return block
+    }
+
+    private func saveImageBlock(_ image: Data) -> WorkerBlock {
+        let block = {
+            let docsDir = try self.finder.documentsDir()
+            let imagePath = docsDir.appendingPathComponent("avatar.jpg")
+            try image.write(to: imagePath)
+        }
+
+        return block
+    }
+
+    private func updateImageBlock(_ image: Data, imagePath: URL) -> WorkerBlock {
+        let block = {
+            try image.write(to: imagePath)
+        }
+
+        return block
     }
 
     // MARK: - Const
