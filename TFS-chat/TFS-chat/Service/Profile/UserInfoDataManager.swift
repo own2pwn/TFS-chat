@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias LoadSavedProfileDataBlock = (() throws -> UserInfoModel?)
+
 final class UserInfoDataManager {
     // MARK: - Members
 
@@ -22,8 +24,20 @@ final class UserInfoDataManager {
     // MARK: - Interface
 
     func update(_ newInfo: UserInfoModel, completion: @escaping (Error?) -> Void) {
-        let job = buildJobBlock(newInfo)
+        let job = makeSaveDataBlock(newInfo)
         worker.perform(job, completion: completion)
+    }
+
+    func loadSaved(completion: @escaping ((Error?, UserInfoModel?) -> Void)) {
+        let loader = makeLoadDataBlock()
+
+        worker.load(loader) { err, model in
+            if let model = model {
+                completion(err, model)
+            } else {
+                completion(err, nil)
+            }
+        }
     }
 
     // MARK: - Init
@@ -32,9 +46,9 @@ final class UserInfoDataManager {
         self.worker = worker
     }
 
-    // MARK: - Helpers
+    // MARK: - Save / Load
 
-    private func buildJobBlock(_ model: UserInfoModel) -> WorkerBlock {
+    private func makeSaveDataBlock(_ model: UserInfoModel) -> WorkerBlock {
         let nameUpdateBlock = getStringUpdateBlock(key: nameKey, newValue: model.name)
         let aboutYouUpdateBlock = getStringUpdateBlock(key: aboutYouKey, newValue: model.about)
         let imageUpdateBlock = getImageUpdateBlock(model.imageData)
@@ -49,6 +63,26 @@ final class UserInfoDataManager {
 
         return block
     }
+
+    private func makeLoadDataBlock() -> LoadSavedProfileDataBlock {
+        let block: LoadSavedProfileDataBlock = {
+            let defaults = self.defaults
+
+            guard let name = defaults.value(forKey: self.nameKey) as? String else {
+                return nil
+            }
+            let about = defaults.value(forKey: self.aboutYouKey) as? String
+            let imagePath = try self.getImagePath()
+            let imageData = try? Data(contentsOf: imagePath)
+            let model = UserInfoModel(name: name, about: about, imageData: imageData)
+
+            return model
+        }
+
+        return block
+    }
+
+    // MARK: - Helpers
 
     private func getStringUpdateBlock(key: String, newValue: String?) -> VoidBlock? {
         guard let current = defaults.value(forKey: key) as? String else {
@@ -95,8 +129,7 @@ final class UserInfoDataManager {
 
     private func saveImageBlock(_ image: Data) -> WorkerBlock {
         let block = {
-            let docsDir = try self.finder.documentsDir()
-            let imagePath = docsDir.appendingPathComponent("avatar.jpg")
+            let imagePath = try self.getImagePath()
             try image.write(to: imagePath)
         }
 
@@ -109,6 +142,13 @@ final class UserInfoDataManager {
         }
 
         return block
+    }
+
+    private func getImagePath() throws -> URL {
+        let docsDir = try finder.documentsDir()
+        let imagePath = docsDir.appendingPathComponent("avatar.jpg")
+
+        return imagePath
     }
 
     // MARK: - Const

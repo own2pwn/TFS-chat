@@ -34,15 +34,14 @@ final class GCDWorker: AsyncWorker {
         }
     }
 
-    /* func perform(_ job: @escaping WorkerBlock, completion: @escaping WorkerCompletion) {
-     queue.async {
-     do {
-     let result = try job()
-     completion(result, nil)
-     }
-     catch {
-     completion(false, error)
-     }
-     }
-     } */
+    func load<M>(_ loader: @escaping WorkerLoadBlock<M>, completion: @escaping WorkerLoadCompletion<M>) {
+        queue.async {
+            do {
+                let result = try loader()
+                completion(nil, result)
+            } catch {
+                completion(error, nil)
+            }
+        }
+    }
 }

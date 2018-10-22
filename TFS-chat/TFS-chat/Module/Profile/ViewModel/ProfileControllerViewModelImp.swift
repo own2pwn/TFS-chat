@@ -20,6 +20,8 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
 
     var viewModelUpdated: VoidBlock?
 
+    var needsViewUpdate: ((ProfileViewModel) -> Void)?
+
     var showAlert: ((UIAlertController) -> Void)?
 
     // MARK: - Members
@@ -44,10 +46,25 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
 
     // MARK: - Methods
 
-    func endEditing() {
-        currentModel = nil
-        saveButtonEnabled?(false)
+    func loadSavedData() {
+        let worker = getAsyncWorker(for: .gcd)
+        let service = UserInfoDataManager(worker: worker)
+
+        service.loadSaved { err, model in
+            DispatchQueue.main.async {
+                if let err = err {
+                    let retryBlock: VoidBlock = { [weak self] in
+                        self?.loadSavedData()
+                    }
+                    self.showErrorAlert(with: err, retryBlock: retryBlock)
+                } else if let model = model {
+                    self.handleLoadedModel(model)
+                }
+            }
+        }
     }
+
+    func endEditing() {}
 
     func saveDataGCD() {
         saveData(sender: .gcd)
@@ -57,7 +74,32 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         saveData(sender: .operation)
     }
 
-    // MARK: - Helpers
+    // MARK: - Load
+
+    private func handleLoadedModel(_ model: UserInfoModel) {
+        defer {
+            initialModel = model
+            currentModel = model
+            saveButtonEnabled?(false)
+        }
+
+        let avatar: UIImage?
+        if let imageData = model.imageData {
+            avatar = UIImage(data: imageData)
+        } else {
+            avatar = UIImage(named: "imgProfilePlaceholder")
+        }
+        name = model.name
+        aboutYou = model.about
+        image = avatar
+
+        if let avatar = avatar {
+            let profileViewModel = ProfileViewModel(name: model.name, about: model.about, avatar: avatar)
+            needsViewUpdate?(profileViewModel)
+        } else { fatalError() }
+    }
+
+    // MARK: - Save
 
     private func saveData(sender: SaveButtonType) {
         guard let model = currentModel else { fatalError() }
@@ -65,12 +107,31 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         let worker = getAsyncWorker(for: sender)
         let service = UserInfoDataManager(worker: worker)
         service.update(model) { err in
-            if let err = err {
-                self.showErrorAlert(with: err)
-            } else {
-                self.showSuccessAlert()
-            }
+            DispatchQueue.main.async { self.handleDataSave(sender: sender, err) }
         }
+    }
+
+    private func handleDataSave(sender: SaveButtonType, _ err: Error?) {
+        if let err = err {
+            let retryBlock: VoidBlock = { [weak self] in
+                self?.saveData(sender: sender)
+            }
+            showErrorAlert(with: err, retryBlock: retryBlock)
+        } else {
+            updateView()
+        }
+    }
+
+    // MARK: - Save Completion
+
+    private func updateView() {
+        guard
+            let name = name,
+            let avatar = image ?? UIImage(named: "imgProfilePlaceholder") else { fatalError() }
+
+        let profileViewModel = ProfileViewModel(name: name, about: aboutYou, avatar: avatar)
+        needsViewUpdate?(profileViewModel)
+        showSuccessAlert()
     }
 
     private func showSuccessAlert() {
@@ -81,16 +142,23 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         showAlert?(alert)
     }
 
-    private func showErrorAlert(with error: Error) {}
+    private func showLoadingErrorAlert(with error: Error, retryBlock: @escaping VoidBlock) {
+        let alert = makeRetryableAlert(with: "Failed",
+                                       message: "Couldn't load saved data!",
+                                       retryBlock: retryBlock)
 
-    private func getAsyncWorker(for button: SaveButtonType) -> AsyncWorker {
-        switch button {
-        case .gcd:
-            return GCDWorker()
-        default:
-            fatalError()
-        }
+        showAlert?(alert)
     }
+
+    private func showErrorAlert(with error: Error, retryBlock: @escaping VoidBlock) {
+        let alert = makeRetryableAlert(with: "Failed",
+                                       message: "Profile data not saved!",
+                                       retryBlock: retryBlock)
+
+        showAlert?(alert)
+    }
+
+    // MARK: - Output
 
     private func updateOutput() {
         let nameValue = textOrNilIfEmpty(name)
@@ -105,6 +173,29 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         if let currentModel = currentModel,
             initialModel != currentModel {
             saveButtonEnabled?(true)
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func makeRetryableAlert(with title: String?, message: String?, retryBlock: @escaping VoidBlock) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let retry = UIAlertAction(title: "Retry?", style: .default) { _ in
+            retryBlock()
+        }
+        alert.addAction(ok)
+        alert.addAction(retry)
+
+        return alert
+    }
+
+    private func getAsyncWorker(for button: SaveButtonType) -> AsyncWorker {
+        switch button {
+        case .gcd:
+            return GCDWorker()
+        default:
+            fatalError()
         }
     }
 

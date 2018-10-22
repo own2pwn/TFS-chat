@@ -13,5 +13,7 @@ protocol ProfileControllerViewModelOutput: class {
 
     var viewModelUpdated: VoidBlock? { get set }
 
+    var needsViewUpdate: ((ProfileViewModel) -> Void)? { get set }
+
     var showAlert: ((UIAlertController) -> Void)? { get set }
 }

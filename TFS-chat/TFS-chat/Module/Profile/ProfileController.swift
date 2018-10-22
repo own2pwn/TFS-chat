@@ -53,6 +53,7 @@ final class ProfileController: UIViewController {
 
         setupModule()
         setupEditButton()
+        viewModel.loadSavedData()
     }
 
     // MARK: - Methods
@@ -72,8 +73,12 @@ final class ProfileController: UIViewController {
             guard let `self` = self else { return }
             let btns: [UIButton] = [self.gcdButton, self.operationButton]
             btns.forEach { $0.isEnabled = enabled }
+        }
 
-            print("^ enabled: \(enabled)")
+        viewModel.needsViewUpdate = { [weak self] viewModel in
+            DispatchQueue.main.async {
+                self?.updateView(viewModel)
+            }
         }
 
         viewModel.showAlert = { [weak self] alert in
@@ -178,9 +183,7 @@ final class ProfileController: UIViewController {
             alertController.addAction(takePhoto)
         }
 
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel) { [weak self] _ in
-            self?.dismiss(animated: true)
-        }
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
         alertController.addAction(cancel)
 
         if let ipadPopover = alertController.popoverPresentationController {
@@ -205,6 +208,15 @@ final class ProfileController: UIViewController {
         picker.allowsEditing = true
 
         present(picker, animated: true)
+    }
+
+    private func updateView(_ viewModel: ProfileViewModel) {
+        nameLabel.text = viewModel.name
+        aboutYouLabel.text = viewModel.about
+        avatarImageView.image = viewModel.avatar
+
+        nameTextField.text = viewModel.name
+        aboutYouTextView.text = viewModel.about
     }
 
     private func updateText(_ text: String?, with string: String, in range: NSRange) -> String? {
