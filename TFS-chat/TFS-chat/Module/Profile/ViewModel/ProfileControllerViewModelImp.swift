@@ -77,26 +77,18 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
     // MARK: - Load
 
     private func handleLoadedModel(_ model: UserInfoModel) {
-        defer {
-            initialModel = model
-            currentModel = model
-            saveButtonEnabled?(false)
-        }
-
-        let avatar: UIImage?
-        if let imageData = model.imageData {
-            avatar = UIImage(data: imageData)
-        } else {
-            avatar = UIImage(named: "imgProfilePlaceholder")
-        }
         name = model.name
         aboutYou = model.about
-        image = avatar
+        image = model.avatar ?? UIImage(named: "imgProfilePlaceholder")
 
-        if let avatar = avatar {
+        if let avatar = image {
             let profileViewModel = ProfileViewModel(name: model.name, about: model.about, avatar: avatar)
             needsViewUpdate?(profileViewModel)
         } else { fatalError() }
+
+        initialModel = model
+        currentModel = model
+        updateOutput()
     }
 
     // MARK: - Save
@@ -169,11 +161,10 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
             saveButtonEnabled?(false)
             return
         }
-        currentModel = UserInfoModel(name: name, about: aboutYouValue, imageData: jpegData(from: image))
-        if let currentModel = currentModel,
-            initialModel != currentModel {
-            saveButtonEnabled?(true)
-        }
+        currentModel = UserInfoModel(name: name, about: aboutYouValue, avatar: image)
+
+        let enableSave = (currentModel != nil && initialModel != currentModel)
+        saveButtonEnabled?(enableSave)
     }
 
     // MARK: - Helpers
@@ -197,12 +188,6 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         default:
             fatalError()
         }
-    }
-
-    private func jpegData(from image: UIImage?) -> Data? {
-        guard let image = image else { return nil }
-
-        return image.jpegData(compressionQuality: 0.9)
     }
 
     private func textOrNilIfEmpty(_ text: String?) -> String? {

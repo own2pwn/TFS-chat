@@ -10,6 +10,10 @@ import Foundation
 
 typealias LoadSavedProfileDataBlock = (() throws -> UserInfoModel?)
 
+struct ImageConvertationError: Error {
+    let reason: String = "can't extract jpeg data"
+}
+
 final class UserInfoDataManager {
     // MARK: - Members
 
@@ -51,7 +55,7 @@ final class UserInfoDataManager {
     private func makeSaveDataBlock(_ model: UserInfoModel) -> WorkerBlock {
         let nameUpdateBlock = getStringUpdateBlock(key: nameKey, newValue: model.name)
         let aboutYouUpdateBlock = getStringUpdateBlock(key: aboutYouKey, newValue: model.about)
-        let imageUpdateBlock = getImageUpdateBlock(model.imageData)
+        let imageUpdateBlock = getImageUpdateBlock(model.avatar)
 
         let block: WorkerBlock = { [nameBlock = nameUpdateBlock,
                                     aboutBlock = aboutYouUpdateBlock,
@@ -74,7 +78,8 @@ final class UserInfoDataManager {
             let about = defaults.value(forKey: self.aboutYouKey) as? String
             let imagePath = try self.getImagePath()
             let imageData = try? Data(contentsOf: imagePath)
-            let model = UserInfoModel(name: name, about: about, imageData: imageData)
+            let avatar = UIImage(data: imageData)
+            let model = UserInfoModel(name: name, about: about, avatar: avatar)
 
             return model
         }
@@ -105,18 +110,18 @@ final class UserInfoDataManager {
 
     // MARK: - Image
 
-    private func getImageUpdateBlock(_ imageData: Data?) -> WorkerBlock? {
+    private func getImageUpdateBlock(_ image: UIImage?) -> WorkerBlock? {
         guard let imagePath = defaults.value(forKey: imageKey) as? URL else {
-            if let data = imageData {
-                return saveImageBlock(data)
+            if let image = image {
+                return saveImageBlock(image)
             }
             return nil
         }
-        guard let imageData = imageData else {
+        guard let image = image else {
             return removeImageBlock(imagePath)
         }
 
-        return updateImageBlock(imageData, imagePath: imagePath)
+        return updateImageBlock(image, imagePath: imagePath)
     }
 
     private func removeImageBlock(_ imagePath: URL) -> WorkerBlock? {
@@ -127,18 +132,24 @@ final class UserInfoDataManager {
         return block
     }
 
-    private func saveImageBlock(_ image: Data) -> WorkerBlock {
+    private func saveImageBlock(_ image: UIImage) -> WorkerBlock {
         let block = {
+            guard let imageData = image.jpegData(compressionQuality: 0.95) else {
+                throw ImageConvertationError()
+            }
             let imagePath = try self.getImagePath()
-            try image.write(to: imagePath)
+            try imageData.write(to: imagePath)
         }
 
         return block
     }
 
-    private func updateImageBlock(_ image: Data, imagePath: URL) -> WorkerBlock {
+    private func updateImageBlock(_ image: UIImage, imagePath: URL) -> WorkerBlock {
         let block = {
-            try image.write(to: imagePath)
+            guard let imageData = image.jpegData(compressionQuality: 0.95) else {
+                throw ImageConvertationError()
+            }
+            try imageData.write(to: imagePath)
         }
 
         return block

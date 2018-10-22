@@ -11,5 +11,5 @@ import Foundation
 struct UserInfoModel: Hashable {
     let name: String
     let about: String?
-    let imageData: Data?
+    let avatar: UIImage?
 }
