@@ -8,26 +8,6 @@
 
 import Foundation
 
-final class Finder {
-    // MARK: - Members
-
-    private let fm = FileManager.default
-
-    // MARK: - Interface
-
-    func documentsDir() throws -> URL {
-        do {
-            return try fm.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        } catch {
-            throw error
-        }
-    }
-
-    func delete(filePath: URL) throws {
-        return try fm.removeItem(at: filePath)
-    }
-}
-
 final class UserInfoDataManager {
     // MARK: - Members
 
@@ -59,16 +39,12 @@ final class UserInfoDataManager {
         let aboutYouUpdateBlock = getStringUpdateBlock(key: aboutYouKey, newValue: model.about)
         let imageUpdateBlock = getImageUpdateBlock(model.imageData)
 
-        let block: WorkerBlock = { [nameBlock = nameUpdateBlock, aboutBlock = aboutYouUpdateBlock, imageBlock = imageUpdateBlock] in
-            if let nameBlock = nameBlock {
-                nameBlock()
-            }
-            if let aboutBlock = aboutBlock {
-                aboutBlock()
-            }
-            if let imageBlock = imageBlock {
-                try imageBlock()
-            }
+        let block: WorkerBlock = { [nameBlock = nameUpdateBlock,
+                                    aboutBlock = aboutYouUpdateBlock,
+                                    imageBlock = imageUpdateBlock] in
+            nameBlock?()
+            aboutBlock?()
+            try imageBlock?()
         }
 
         return block

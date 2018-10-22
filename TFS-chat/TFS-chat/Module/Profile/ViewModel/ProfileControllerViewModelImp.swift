@@ -20,6 +20,8 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
 
     var viewModelUpdated: VoidBlock?
 
+    var showAlert: ((UIAlertController) -> Void)?
+
     // MARK: - Members
 
     var name: String? {
@@ -58,8 +60,28 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
     // MARK: - Helpers
 
     private func saveData(sender: SaveButtonType) {
+        guard let model = currentModel else { fatalError() }
+
         let worker = getAsyncWorker(for: sender)
+        let service = UserInfoDataManager(worker: worker)
+        service.update(model) { err in
+            if let err = err {
+                self.showErrorAlert(with: err)
+            } else {
+                self.showSuccessAlert()
+            }
+        }
     }
+
+    private func showSuccessAlert() {
+        let alert = UIAlertController(title: "Success", message: "Profile updated!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+
+        showAlert?(alert)
+    }
+
+    private func showErrorAlert(with error: Error) {}
 
     private func getAsyncWorker(for button: SaveButtonType) -> AsyncWorker {
         switch button {

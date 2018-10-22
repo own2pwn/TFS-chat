@@ -36,6 +36,7 @@
 		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
+		DEC8C67B217DF5560061C46E /* Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C67A217DF5560061C46E /* Finder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
+		DEC8C67A217DF5560061C46E /* Finder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				DE6D3CD0217DE145006AC274 /* AsyncWorker */,
+				DEC8C67A217DF5560061C46E /* Finder.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
 				DE6D3CD9217DE1AB006AC274 /* ProfileControllerViewModelImp.swift in Sources */,
 				DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */,
+				DEC8C67B217DF5560061C46E /* Finder.swift in Sources */,
 				DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */,
 				B93EBC5F21734A3900A86229 /* ThemeProvider.swift in Sources */,
 				DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */,

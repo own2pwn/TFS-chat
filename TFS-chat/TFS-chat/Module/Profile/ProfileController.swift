@@ -58,7 +58,7 @@ final class ProfileController: UIViewController {
     // MARK: - Methods
 
     private func setupModule() {
-        setupViewModel()
+        bindViewModel()
         nameTextField.delegate = self
         aboutYouTextView.delegate = self
 
@@ -67,13 +67,19 @@ final class ProfileController: UIViewController {
         editingControls.forEach { $0.alpha = 0 }
     }
 
-    private func setupViewModel() {
+    private func bindViewModel() {
         viewModel.saveButtonEnabled = { [weak self] enabled in
             guard let `self` = self else { return }
             let btns: [UIButton] = [self.gcdButton, self.operationButton]
             btns.forEach { $0.isEnabled = enabled }
 
             print("^ enabled: \(enabled)")
+        }
+
+        viewModel.showAlert = { [weak self] alert in
+            DispatchQueue.main.async {
+                self?.present(alert, animated: true)
+            }
         }
     }
 
@@ -143,10 +149,14 @@ final class ProfileController: UIViewController {
     }
 
     @IBAction
-    private func handleGCDTap() {}
+    private func handleGCDTap() {
+        viewModel.saveDataGCD()
+    }
 
     @IBAction
-    private func handleOperationTap() {}
+    private func handleOperationTap() {
+        viewModel.saveDataOperation()
+    }
 
     @IBAction
     private func pickImage() {
@@ -196,27 +206,31 @@ final class ProfileController: UIViewController {
 
         present(picker, animated: true)
     }
+
+    private func updateText(_ text: String?, with string: String, in range: NSRange) -> String? {
+        if let text = text, let textRange = Range(range, in: text) {
+            return text.replacingCharacters(in: textRange, with: string)
+        } else {
+            return nil
+        }
+    }
 }
 
 extension ProfileController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        handleTextFieldText(textField.text)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleTextFieldText(textField.text)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let updatedText = updateText(textField.text, with: string, in: range)
+        viewModel.name = updatedText
 
         return true
-    }
-
-    private func handleTextFieldText(_ text: String?) {
-        viewModel.name = text
     }
 }
 
 extension ProfileController: UITextViewDelegate {
-    func textViewDidEndEditing(_ textView: UITextView) {
-        viewModel.aboutYou = textView.text
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let updatedText = updateText(textView.text, with: text, in: range)
+        viewModel.aboutYou = updatedText
+
+        return true
     }
 }
 
