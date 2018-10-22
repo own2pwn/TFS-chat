@@ -15,6 +15,10 @@ final class AppThemeManager {
 
     private let defaults = UserDefaults.standard
 
+    private let worker: AsyncWorker = {
+        GCDWorker()
+    }()
+
     // MARK: - Interface
 
     func setTheme(_ color: UIColor) {
@@ -33,7 +37,11 @@ final class AppThemeManager {
     // MARK: - Helpers
 
     private func saveColor(_ color: UIColor) {
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
-        defaults.set(colorData, forKey: kThemeColor)
+        let job = {
+            let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
+            self.defaults.set(colorData, forKey: self.kThemeColor)
+        }
+
+        worker.perform(job)
     }
 }
