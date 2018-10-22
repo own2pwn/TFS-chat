@@ -20,6 +20,9 @@
 		DE3B877A2157ADE400D9DA8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */; };
 		DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */; };
 		DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD1217DE158006AC274 /* GCDWorker.swift */; };
+		DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD4217DE193006AC274 /* ProfileControllerViewModelOutput.swift */; };
+		DE6D3CD7217DE19D006AC274 /* ProfileControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD6217DE19D006AC274 /* ProfileControllerViewModel.swift */; };
+		DE6D3CD9217DE1AB006AC274 /* ProfileControllerViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD8217DE1AB006AC274 /* ProfileControllerViewModelImp.swift */; };
 		DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9F43B8216A019500B224D4 /* ConversationsListViewController.swift */; };
 		DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */; };
 		DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */; };
@@ -31,7 +34,6 @@
 		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
-		DEDFCA44217CC6C6009C056C /* ProfileControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDFCA43217CC6C6009C056C /* ProfileControllerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,9 @@
 		DE5D33FF2173314C00B1DC43 /* ThemesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemesViewController.m; sourceTree = "<group>"; };
 		DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncWorker.swift; sourceTree = "<group>"; };
 		DE6D3CD1217DE158006AC274 /* GCDWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDWorker.swift; sourceTree = "<group>"; };
+		DE6D3CD4217DE193006AC274 /* ProfileControllerViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewModelOutput.swift; sourceTree = "<group>"; };
+		DE6D3CD6217DE19D006AC274 /* ProfileControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewModel.swift; sourceTree = "<group>"; };
+		DE6D3CD8217DE1AB006AC274 /* ProfileControllerViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewModelImp.swift; sourceTree = "<group>"; };
 		DE9F43B8216A019500B224D4 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		DEBD65FA216A6A8D00019ACD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -65,7 +70,6 @@
 		DEBD6608216A7B6400019ACD /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
-		DEDFCA43217CC6C6009C056C /* ProfileControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		DE3B876E2157ADE300D9DA8D /* TFS-chat */ = {
 			isa = PBXGroup;
 			children = (
+				DEC8C671217DE2DF0061C46E /* Core */,
 				DEBD6600216A6B9300019ACD /* Service */,
 				DEBD65F7216A6A7500019ACD /* Model */,
 				DE9F43B62169FEB100B224D4 /* Module */,
@@ -130,6 +135,16 @@
 				DE6D3CD1217DE158006AC274 /* GCDWorker.swift */,
 			);
 			path = AsyncWorker;
+			sourceTree = "<group>";
+		};
+		DE6D3CD3217DE18B006AC274 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D3CD6217DE19D006AC274 /* ProfileControllerViewModel.swift */,
+				DE6D3CD8217DE1AB006AC274 /* ProfileControllerViewModelImp.swift */,
+				DE6D3CD4217DE193006AC274 /* ProfileControllerViewModelOutput.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DE8F4C902157B83800B14E76 /* Extension */ = {
@@ -193,11 +208,9 @@
 		DEBD6600216A6B9300019ACD /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DE6D3CD0217DE145006AC274 /* AsyncWorker */,
-				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
-				DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */,
-				B93EBC5E21734A3900A86229 /* ThemeProvider.swift */,
-				B91BA098217361F2002A90EF /* AppThemeManager.swift */,
+				DEC8C672217DE2EA0061C46E /* Profile */,
+				DEC8C670217DE2D50061C46E /* Theme */,
+				DEC8C66F217DE2CB0061C46E /* Chat */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -205,8 +218,8 @@
 		DEBD6603216A755300019ACD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DE6D3CD3217DE18B006AC274 /* ViewModel */,
 				DE3B87712157ADE300D9DA8D /* ProfileController.swift */,
-				DEDFCA43217CC6C6009C056C /* ProfileControllerViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -226,6 +239,39 @@
 				DEBD6608216A7B6400019ACD /* MessageCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		DEC8C66F217DE2CB0061C46E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
+				DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		DEC8C670217DE2D50061C46E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B93EBC5E21734A3900A86229 /* ThemeProvider.swift */,
+				B91BA098217361F2002A90EF /* AppThemeManager.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		DEC8C671217DE2DF0061C46E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D3CD0217DE145006AC274 /* AsyncWorker */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DEC8C672217DE2EA0061C46E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,20 +350,22 @@
 				B91BA099217361F2002A90EF /* AppThemeManager.swift in Sources */,
 				DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */,
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
+				DE6D3CD9217DE1AB006AC274 /* ProfileControllerViewModelImp.swift in Sources */,
 				DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */,
 				B93EBC5F21734A3900A86229 /* ThemeProvider.swift in Sources */,
 				DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */,
 				DE3B87722157ADE300D9DA8D /* ProfileController.swift in Sources */,
+				DE6D3CD7217DE19D006AC274 /* ProfileControllerViewModel.swift in Sources */,
 				DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */,
 				DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */,
 				B93EBC6221734C1B00A86229 /* Themes.m in Sources */,
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
 				DEBD6609216A7B6400019ACD /* MessageCell.swift in Sources */,
-				DEDFCA44217CC6C6009C056C /* ProfileControllerViewModel.swift in Sources */,
 				DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
+				DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DE0AFE0E217CE7720061987D /* UserInfoViewModel.swift in Sources */,
 				B913601E21736DBD00B31BB8 /* ThemesViewController.m in Sources */,

@@ -216,16 +216,7 @@ extension ProfileController: UITextFieldDelegate {
 
 extension ProfileController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
-        handleTextViewText(textView.text)
-    }
-
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        handleTextViewText(textView.text)
-        return true
-    }
-
-    private func handleTextViewText(_ text: String?) {
-        viewModel.aboutYou = text
+        viewModel.aboutYou = textView.text
     }
 }
 

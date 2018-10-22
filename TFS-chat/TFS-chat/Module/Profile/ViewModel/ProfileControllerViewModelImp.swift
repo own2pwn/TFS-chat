@@ -1,26 +1,12 @@
 //
-//  ProfileControllerViewModel.swift
+//  ProfileControllerViewModelImp.swift
 //  TFS-chat
 //
-//  Created by Evgeniy on 21/10/2018.
+//  Created by Evgeniy on 22/10/2018.
 //  Copyright © 2018 Evgeniy. All rights reserved.
 //
 
 import UIKit
-
-protocol ProfileControllerViewModelOutput: class {
-    var saveButtonEnabled: ((Bool) -> Void)? { get set }
-}
-
-protocol ProfileControllerViewModel: ProfileControllerViewModelOutput {
-    var model: UserInfoViewModel? { get }
-
-    var name: String? { get set }
-    var aboutYou: String? { get set }
-    var image: UIImage? { get set }
-
-    func endEditing()
-}
 
 final class ProfileControllerViewModelImp: ProfileControllerViewModel {
     // MARK: - Output
@@ -28,8 +14,6 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
     var saveButtonEnabled: ((Bool) -> Void)?
 
     // MARK: - Members
-
-    var model: UserInfoViewModel?
 
     var name: String? {
         didSet { updateOutput() }
@@ -43,10 +27,16 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         didSet { updateOutput() }
     }
 
+    // MARK: - Private
+
+    private var initialModel: UserInfoViewModel?
+
+    private var currentModel: UserInfoViewModel?
+
     // MARK: - Methods
 
     func endEditing() {
-        model = nil
+        currentModel = nil
         saveButtonEnabled?(false)
     }
 
@@ -57,13 +47,13 @@ final class ProfileControllerViewModelImp: ProfileControllerViewModel {
         let aboutYouValue = textOrNilIfEmpty(aboutYou)
 
         guard let name = nameValue else {
-            model = nil
+            currentModel = nil
             saveButtonEnabled?(false)
             return
         }
-        let oldModel = model
-        model = UserInfoViewModel(name: name, about: aboutYouValue, imageData: jpegData(from: image))
-        if oldModel != model {
+        currentModel = UserInfoViewModel(name: name, about: aboutYouValue, imageData: jpegData(from: image))
+        if let currentModel = currentModel,
+            initialModel != currentModel {
             saveButtonEnabled?(true)
         }
     }
