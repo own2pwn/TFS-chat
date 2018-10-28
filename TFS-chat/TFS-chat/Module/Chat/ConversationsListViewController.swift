@@ -10,6 +10,25 @@ import UIKit
 
 private let showDialogSegue = "idShowDialog"
 
+struct Chat {
+    let receiver: String
+    let entries: [ChatEntry]
+
+    var lastMessageText: String? {
+        return entries.last?.message
+    }
+}
+
+struct ChatEntry {
+    let message: String
+    let receivedAt: Date
+
+    init(with message: String) {
+        self.message = message
+        receivedAt = Date()
+    }
+}
+
 final class ConversationsListViewController: UIViewController {
     // MARK: - Outlets
 
@@ -20,6 +39,7 @@ final class ConversationsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupModule()
         addBarButton()
 
         tableView.estimatedRowHeight = 74
@@ -50,7 +70,30 @@ final class ConversationsListViewController: UIViewController {
 
     private lazy var themeManager = AppThemeManager()
 
+    private let moduleFactory = MPCModuleFactory()
+
+    private lazy var communicationManager: CommunicationManager = {
+        let communicator = MultipeerCommunicatorImp()
+        let manager = CommunicationManager()
+        communicator.delegate = manager
+        communicator.isOnline = true
+
+        return manager
+    }()
+
     // MARK: - Methods
+
+    private func setupModule() {
+        communicationManager.onUserFound = { [weak self] id, username in
+            _ = id
+
+            let model = ConversationModel(recipent: username!, lastMessage: nil, lastMessageDate: nil, isRecipentOnline: true, hasUnreadMessages: false)
+
+            let viewModel = ConversationCellViewModelImp(with: model)
+            self?.activeConversations.append(viewModel)
+            DispatchQueue.main.async { self?.tableView.reloadData() }
+        }
+    }
 
     private func addBarButton() {
         let image = UIImage(named: "imgBarButtonProfile")
@@ -68,19 +111,25 @@ final class ConversationsListViewController: UIViewController {
 
     private let sections = ["Online", "History"]
 
-    private lazy var activeConversations: [ConversationCellViewModel] = {
-        let provider = ConversationListProvider()
-        let models = provider.getOnline()
+//    private lazy var activeConversations: [ConversationCellViewModel] = {
+//        let provider = ConversationListProvider()
+//        let models = provider.getOnline()
+//
+//        ConversationCellViewModelImp(with: ConversationModel)
+//
+//        return models.map { ConversationCellViewModelImp(with: $0) }
+//    }()
 
-        return models.map { ConversationCellViewModelImp(with: $0) }
-    }()
+    private lazy var activeConversations = [ConversationCellViewModel]()
 
-    private lazy var historyConversations: [ConversationCellViewModel] = {
-        let provider = ConversationListProvider()
-        let models = provider.gethistory()
+    private lazy var historyConversations = [ConversationCellViewModel]()
 
-        return models.map { ConversationCellViewModelImp(with: $0) }
-    }()
+//    private lazy var historyConversations: [ConversationCellViewModel] = {
+//        let provider = ConversationListProvider()
+//        let models = provider.gethistory()
+//
+//        return models.map { ConversationCellViewModelImp(with: $0) }
+//    }()
 
     // MARK: - Actions
 
@@ -153,7 +202,7 @@ extension ConversationsListViewController: UITableViewDelegate {
 
 extension ConversationsListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return 1//sections.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

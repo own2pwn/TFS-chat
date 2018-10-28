@@ -19,6 +19,14 @@ protocol CommunicatorDelegate: class {
 }
 
 final class CommunicationManager: CommunicatorDelegate {
+    // MARK: - Output
+
+    var onUserFound: ((String, String?) -> Void)?
+
+    var onUserLost: ((String) -> Void)?
+
+    var onMessageReceived: ((String, String, String) -> Void)?
+
     // MARK: - CommunicatorDelegate
 
     func didFoundUser(userID: String, userName: String?) {}
