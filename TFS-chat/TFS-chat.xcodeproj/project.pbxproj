@@ -40,6 +40,7 @@
 		DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */; };
 		DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicationManager.swift */; };
 		DEC384042185A765002EAB2A /* MPCModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384032185A765002EAB2A /* MPCModuleFactory.swift */; };
+		DEC384072185DD83002EAB2A /* Optional+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384062185DD83002EAB2A /* Optional+Comparable.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
 		DEC8C67B217DF5560061C46E /* Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C67A217DF5560061C46E /* Finder.swift */; };
@@ -89,6 +90,7 @@
 		DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicatorImp.swift; sourceTree = "<group>"; };
 		DEC384012185A70D002EAB2A /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		DEC384032185A765002EAB2A /* MPCModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCModuleFactory.swift; sourceTree = "<group>"; };
+		DEC384062185DD83002EAB2A /* Optional+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Comparable.swift"; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
 		DEC8C67A217DF5560061C46E /* Finder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finder.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				DEBD93BC215FA55400671ABB /* UIColor+Init.swift */,
 				DE9A60C6217E1802000D0BFE /* UIImage+Init.swift */,
+				DEC384062185DD83002EAB2A /* Optional+Comparable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				DEC384042185A765002EAB2A /* MPCModuleFactory.swift in Sources */,
 				DEF97D3D217E25CF00EE3A46 /* ThrowingAsyncOperationWithCompletion.swift in Sources */,
 				DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */,
+				DEC384072185DD83002EAB2A /* Optional+Comparable.swift in Sources */,
 				DE9A60CC217E1C7D000D0BFE /* AsyncOperation.swift in Sources */,
 				DEF97D40217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift in Sources */,
 				DE9A60C9217E1A0A000D0BFE /* OperationWorker.swift in Sources */,

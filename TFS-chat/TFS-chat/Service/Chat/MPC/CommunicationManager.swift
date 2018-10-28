@@ -18,7 +18,7 @@ protocol CommunicatorDelegate: class {
     func didReceiveMessage(text: String, fromUser: String, toUser: String)
 }
 
-struct ChatUser {
+struct ChatUser: Hashable {
     let userId: String
     let userName: String?
 
@@ -29,7 +29,7 @@ struct ChatUser {
     }
 }
 
-struct Chat {
+struct Chat: Comparable {
     var receiver: ChatUser
     let entries: [ChatEntry]
 
@@ -44,7 +44,28 @@ struct Chat {
     }
 }
 
-struct ChatEntry {
+extension Chat: Comparable {
+    static func < (lhs: Chat, rhs: Chat) -> Bool {
+        let lhsEntry = lhs.entries.last
+        let rhsEntry = rhs.entries.last
+
+        switch (lhsEntry, rhsEntry) {
+        case let (.some(left), .some(right)):
+            return left.receivedAt < right.receivedAt
+
+        case (nil, nil):
+            let lhsName = lhs.receiver.userName
+            let rhsName = rhs.receiver.userName
+
+            return lhsName < rhsName
+
+        default:
+            return false
+        }
+    }
+}
+
+struct ChatEntry: Hashable {
     let message: String
     let receivedAt: Date
 
@@ -59,6 +80,16 @@ final class Box<Value> {
 
     init(value: Value) {
         self.value = value
+    }
+}
+
+extension Array where Element: Comparable {
+    mutating func mutate(element: Element, _ mutation: ((inout Element) -> Void)) {
+        guard let index = firstIndex(where: { $0 == element }) else { return }
+        var element = self[index]
+        mutation(&element)
+
+        self[index] = element
     }
 }
 
@@ -92,6 +123,9 @@ final class CommunicationManager: CommunicatorDelegate {
     // MARK: - CommunicatorDelegate
 
     func didFoundUser(userID: String, userName: String?) {
+        var arr = chatBox.value
+        let some = arr[1]
+
         createChatIfNotExists(with: userID, userName: userName)
         activeChatListUpdated?(activeChats)
 
