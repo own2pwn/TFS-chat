@@ -12,6 +12,8 @@ import MultipeerConnectivity
 final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
     // MARK: - Interface
 
+    let localPeerID: String
+
     var delegate: CommunicatorDelegate?
 
     var isOnline: Bool = false {
@@ -34,8 +36,9 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
         me = MultipeerCommunicatorImp.loadOrCreatePeer()
         advertiser = MultipeerCommunicatorImp.makeAdvertiser(for: me)
         browser = MultipeerCommunicatorImp.makeBrowser(for: me)
-        super.init()
+        localPeerID = me.displayName
 
+        super.init()
         advertiser.delegate = self
         browser.delegate = self
     }
@@ -108,7 +111,8 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
     private static func loadOrCreatePeer() -> MCPeerID {
         let defaults = UserDefaults.standard
 
-        if let peerData = defaults.value(forKey: peerKey) as? Data, let savedPeer = NSKeyedUnarchiver.unarchiveObject(with: peerData) as? MCPeerID {
+        if let peerData = defaults.value(forKey: peerKey) as? Data,
+            let savedPeer = NSKeyedUnarchiver.unarchiveObject(with: peerData) as? MCPeerID {
             return savedPeer
         }
         let newPeer = MCPeerID(displayName: UIDevice.current.name)

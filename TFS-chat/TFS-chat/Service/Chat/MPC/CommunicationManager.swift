@@ -23,10 +23,6 @@ struct ChatUser: Hashable {
     let userName: String?
 
     var isOnline: Bool
-
-    mutating func setOnline(_ online: Bool) {
-        isOnline = online
-    }
 }
 
 struct Chat {
@@ -76,14 +72,6 @@ struct ChatEntry: Hashable {
         self.sender = sender
         self.receiver = receiver
         receivedAt = Date()
-    }
-}
-
-final class Box<Value> {
-    var value: Value
-
-    init(value: Value) {
-        self.value = value
     }
 }
 

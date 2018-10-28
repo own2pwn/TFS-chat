@@ -44,6 +44,7 @@ final class ConversationsListViewController: UIViewController {
             return
         }
 
+        dialog.communicator = communicator
         dialog.chat = model
         dialog.title = model.receiver.userName ?? "no-name"
     }
@@ -51,8 +52,6 @@ final class ConversationsListViewController: UIViewController {
     // MARK: - Members
 
     private lazy var themeManager = AppThemeManager()
-
-    private let moduleFactory = MPCModuleFactory()
 
     private let communicator: MultipeerCommunicator = {
         MultipeerCommunicatorImp()

@@ -12,6 +12,8 @@ import MultipeerConnectivity
 protocol MultipeerCommunicator: class {
     func sendMessage(_ message: String, to userID: String, completion: ((Bool, Error?) -> Void)?)
 
+    var localPeerID: String { get }
+
     var delegate: CommunicatorDelegate? { get set }
 
     var isOnline: Bool { get set }
