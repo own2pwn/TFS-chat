@@ -10,25 +10,6 @@ import UIKit
 
 private let showDialogSegue = "idShowDialog"
 
-struct Chat {
-    let receiver: String
-    let entries: [ChatEntry]
-
-    var lastMessageText: String? {
-        return entries.last?.message
-    }
-}
-
-struct ChatEntry {
-    let message: String
-    let receivedAt: Date
-
-    init(with message: String) {
-        self.message = message
-        receivedAt = Date()
-    }
-}
-
 final class ConversationsListViewController: UIViewController {
     // MARK: - Outlets
 
@@ -96,6 +77,8 @@ final class ConversationsListViewController: UIViewController {
             self?.activeConversations.append(viewModel)
             DispatchQueue.main.async { self?.tableView.reloadData() }
         }
+
+        //communicationManager.onUserLost
     }
 
     private func addBarButton() {

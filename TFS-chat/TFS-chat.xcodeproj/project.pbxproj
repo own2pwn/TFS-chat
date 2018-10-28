@@ -38,7 +38,7 @@
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
 		DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */; };
-		DEC384022185A70D002EAB2A /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */; };
+		DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicationManager.swift */; };
 		DEC384042185A765002EAB2A /* MPCModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384032185A765002EAB2A /* MPCModuleFactory.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
@@ -87,7 +87,7 @@
 		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
 		DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicatorImp.swift; sourceTree = "<group>"; };
-		DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
+		DEC384012185A70D002EAB2A /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		DEC384032185A765002EAB2A /* MPCModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCModuleFactory.swift; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
@@ -278,6 +278,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		DEC384052185B47A002EAB2A /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DEC384032185A765002EAB2A /* MPCModuleFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		DEC8C66F217DE2CB0061C46E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,10 +351,10 @@
 		DEE948342184F2E400071D3B /* MPC */ = {
 			isa = PBXGroup;
 			children = (
+				DEC384052185B47A002EAB2A /* Factory */,
 				DEE948352184F2F800071D3B /* MultipeerCommunicator.swift */,
 				DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */,
-				DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */,
-				DEC384032185A765002EAB2A /* MPCModuleFactory.swift */,
+				DEC384012185A70D002EAB2A /* CommunicationManager.swift */,
 			);
 			path = MPC;
 			sourceTree = "<group>";
@@ -466,7 +474,7 @@
 				DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */,
 				DE9A60C7217E1802000D0BFE /* UIImage+Init.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
-				DEC384022185A70D002EAB2A /* CommunicatorDelegate.swift in Sources */,
+				DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */,
 				DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DE0AFE0E217CE7720061987D /* UserInfoModel.swift in Sources */,
