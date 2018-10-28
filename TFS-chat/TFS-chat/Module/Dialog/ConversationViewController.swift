@@ -57,7 +57,6 @@ final class ConversationViewController: UIViewController {
         }
 
         let lastRow = IndexPath(row: maxPathIndex, section: 0)
-
         tableView.scrollToRow(at: lastRow, at: .bottom, animated: true)
     }
 

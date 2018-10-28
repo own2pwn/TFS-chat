@@ -31,15 +31,10 @@ final class MessageCell: UITableViewCell, MessageCellConfiguration {
         }
     }
 
-    var messageDate: Date? {
-        didSet {
-            dateLabel.text = messageDate?.humanString
-        }
-    }
-
     // MARK: - Interface
 
     func setup(with text: String, date: Date) {
         messageLabel.text = text
+        dateLabel.text = date.humanString
     }
 }
