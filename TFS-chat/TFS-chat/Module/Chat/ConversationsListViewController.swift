@@ -80,6 +80,12 @@ final class ConversationsListViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+
+        communicationManager.offlineChatListUpdated = { [weak self] chatList in
+            DispatchQueue.main.async {
+                self?.dialogInput?(chatList)
+            }
+        }
     }
 
     private func makeCellViewModel(from chat: ChatModel) -> ConversationCellViewModelImp {

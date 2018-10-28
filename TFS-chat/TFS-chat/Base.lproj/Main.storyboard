@@ -397,6 +397,7 @@
                     <connections>
                         <outlet property="messageTextView" destination="b1H-4N-OvW" id="I8r-cn-0Jt"/>
                         <outlet property="messageTextViewBottom" destination="wh0-zH-rhB" id="2kb-FF-FaQ"/>
+                        <outlet property="sendMessageButton" destination="HSC-XV-ant" id="1v0-ho-4A0"/>
                         <outlet property="tableView" destination="pVO-dN-8DA" id="T7P-dS-RpW"/>
                     </connections>
                 </viewController>

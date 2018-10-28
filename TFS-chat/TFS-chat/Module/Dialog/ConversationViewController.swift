@@ -15,6 +15,9 @@ final class ConversationViewController: UIViewController {
     private var tableView: UITableView!
 
     @IBOutlet
+    private var sendMessageButton: UIButton!
+
+    @IBOutlet
     private var messageTextView: UITextView!
 
     @IBOutlet
@@ -45,6 +48,8 @@ final class ConversationViewController: UIViewController {
     func updateChat(with updatedList: [ChatModel]) {
         guard let updatedChat = updatedList.first(where: { $0.id == chat?.id }) else { return }
 
+        sendMessageButton.isEnabled = updatedChat.receiver.isOnline
+
         chat = updatedChat
         tableView.reloadData()
         scrollToEnd()
@@ -64,7 +69,10 @@ final class ConversationViewController: UIViewController {
 
     @IBAction
     private func sendMessage() {
-        guard let message = messageTextView.text else { return }
+        guard
+            let message = messageTextView.text,
+            !message.isEmpty else { return }
+
         communicator.sendMessage(message, to: chat.receiver.userId) { [weak self] success, err in
             DispatchQueue.main.async { self?.handleMessageCallback(message: message, success, err: err) }
         }

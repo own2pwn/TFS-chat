@@ -24,6 +24,8 @@ final class CommunicationManager: CommunicatorDelegate {
 
     var activeChatListUpdated: (([ChatModel]) -> Void)?
 
+    var offlineChatListUpdated: (([ChatModel]) -> Void)?
+
     // MARK: - Members
 
     private var chats: [ChatModel] = []
@@ -32,12 +34,17 @@ final class CommunicationManager: CommunicatorDelegate {
         return chats.filter { $0.receiver.isOnline }
     }
 
+    private var offlineChats: [ChatModel] {
+        return chats.filter { !$0.receiver.isOnline }
+    }
+
     // MARK: - CommunicatorDelegate
 
     func didFoundUser(userID: String, userName: String?) {
         let chat = getChatOrCreate(with: userID, userName: userName)
         setUserOnline(true, in: chat)
         activeChatListUpdated?(activeChats)
+        offlineChatListUpdated?(offlineChats)
 
         print("^ found \(userID)")
     }
@@ -47,6 +54,7 @@ final class CommunicationManager: CommunicatorDelegate {
         setUserOnline(false, in: chat)
 
         activeChatListUpdated?(activeChats)
+        offlineChatListUpdated?(offlineChats)
         print("^ lost \(userID)")
     }
 
