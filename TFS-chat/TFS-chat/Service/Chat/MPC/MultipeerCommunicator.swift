@@ -65,12 +65,23 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
     // MARK: - Methods
 
     func sendMessage(_ message: String, to userID: String, completion: ((Bool, Error?) -> Void)?) {
-//        guard isOnline else {
-//            let e = MultipeerCommunicatorError(reason: "trying to send message while being offline")
-//            completion?(false, e)
-//
-//            return
-//        }
+        guard let session = getSession(with: userID) else {
+            let err = MultipeerCommunicatorError(reason: "no session found for \(userID)")
+            completion?(false, err)
+            return
+        }
+        guard let serialized = makeMessage(with: message) else {
+            let err = MultipeerCommunicatorError(reason: "can't serialized message")
+            completion?(false, err)
+            return
+        }
+
+        do {
+            try session.send(serialized, toPeers: session.connectedPeers, with: .reliable)
+            completion?(true, nil)
+        } catch {
+            completion?(false, error)
+        }
     }
 
     // MARK: - Helpers
@@ -205,6 +216,12 @@ extension MultipeerCommunicatorImp: MCNearbyServiceBrowserDelegate {
     private func connect(with peer: MCPeerID) {
         let newSession = createSession()
         browser.invitePeer(peer, to: newSession, withContext: nil, timeout: 2)
+    }
+
+    private func getSession(with userID: String) -> MCSession? {
+        let session = sessions.first(where: { $0.connectedPeers.contains(where: { $0.displayName == userID }) })
+
+        return session
     }
 
     private func getSession(with peer: MCPeerID) -> MCSession? {
