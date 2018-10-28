@@ -11,7 +11,12 @@ import UIKit
 final class ConversationViewController: UIViewController {
     // MARK: - Outlets
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet
+    private var tableView: UITableView!
+
+    // MARK: - Members
+
+    var chat: Chat!
 
     // MARK: - Overrides
 
@@ -21,9 +26,9 @@ final class ConversationViewController: UIViewController {
 
     // MARK: - Members
 
-    private lazy var messages: [String] = {
-        DialogMessageProvider().get()
-    }()
+    var messages: [String] {
+        return chat.entries.map { $0.message }
+    }
 }
 
 extension ConversationViewController: UITableViewDelegate {}

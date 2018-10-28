@@ -39,12 +39,13 @@ final class ConversationsListViewController: UIViewController {
         guard
             segue.identifier == showDialogSegue,
             let dialog = segue.destination as? ConversationViewController,
-            let model = sender as? ConversationCellViewModel else {
+            let model = sender as? Chat else {
             super.prepare(for: segue, sender: sender)
             return
         }
 
-        dialog.title = model.name
+        dialog.chat = model
+        dialog.title = model.receiver.userName ?? "no-name"
     }
 
     // MARK: - Members
@@ -54,7 +55,7 @@ final class ConversationsListViewController: UIViewController {
     private let moduleFactory = MPCModuleFactory()
 
     private let communicator: MultipeerCommunicator = {
-        return MultipeerCommunicatorImp()
+        MultipeerCommunicatorImp()
     }()
 
     private lazy var communicationManager: CommunicationManager = {
@@ -68,17 +69,22 @@ final class ConversationsListViewController: UIViewController {
     // MARK: - Methods
 
     private func setupModule() {
-        communicationManager.onUserFound = { [weak self] id, username in
-            _ = id
+        communicationManager.activeChatListUpdated = { [weak self] chatList in
+            guard let `self` = self else { return }
+            self.activeChats = chatList
 
-            let model = ConversationModel(recipent: username!, lastMessage: nil, lastMessageDate: nil, isRecipentOnline: true, hasUnreadMessages: false)
-
-            let viewModel = ConversationCellViewModelImp(with: model)
-            self?.activeConversations.append(viewModel)
-            DispatchQueue.main.async { self?.tableView.reloadData() }
+            DispatchQueue.main.async { self.tableView.reloadData() }
         }
+    }
 
-        //communicationManager.onUserLost
+    private func makeCellViewModel(from chat: Chat) -> ConversationCellViewModelImp {
+        let model = ConversationModel(recipent: chat.receiver.userName ?? "no-name",
+                                      lastMessage: chat.lastMessageText,
+                                      lastMessageDate: chat.entries.last?.receivedAt,
+                                      isRecipentOnline: chat.receiver.isOnline,
+                                      hasUnreadMessages: false)
+
+        return ConversationCellViewModelImp(with: model)
     }
 
     private func addBarButton() {
@@ -97,25 +103,7 @@ final class ConversationsListViewController: UIViewController {
 
     private let sections = ["Online", "History"]
 
-//    private lazy var activeConversations: [ConversationCellViewModel] = {
-//        let provider = ConversationListProvider()
-//        let models = provider.getOnline()
-//
-//        ConversationCellViewModelImp(with: ConversationModel)
-//
-//        return models.map { ConversationCellViewModelImp(with: $0) }
-//    }()
-
-    private lazy var activeConversations = [ConversationCellViewModel]()
-
-    private lazy var historyConversations = [ConversationCellViewModel]()
-
-//    private lazy var historyConversations: [ConversationCellViewModel] = {
-//        let provider = ConversationListProvider()
-//        let models = provider.gethistory()
-//
-//        return models.map { ConversationCellViewModelImp(with: $0) }
-//    }()
+    private var activeChats = [Chat]()
 
     // MARK: - Actions
 
@@ -176,19 +164,15 @@ extension ConversationsListViewController: ​ThemesViewControllerDelegate {
 
 extension ConversationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model: ConversationCellViewModel
-        if indexPath.section == 0 {
-            model = activeConversations[indexPath.row]
-        } else {
-            model = historyConversations[indexPath.row]
-        }
+        let model = activeChats[indexPath.row]
+
         performSegue(withIdentifier: showDialogSegue, sender: model)
     }
 }
 
 extension ConversationsListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1//sections.count
+        return 1 // sections.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -196,11 +180,7 @@ extension ConversationsListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return activeConversations.count
-        }
-
-        return historyConversations.count
+        return activeChats.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -212,9 +192,8 @@ extension ConversationsListViewController: UITableViewDataSource {
     }
 
     private func viewModel(for indexPath: IndexPath) -> ConversationCellViewModel {
-        if indexPath.section == 0 {
-            return activeConversations[indexPath.row]
-        }
-        return historyConversations[indexPath.row]
+        let chat = activeChats[indexPath.row]
+
+        return makeCellViewModel(from: chat)
     }
 }

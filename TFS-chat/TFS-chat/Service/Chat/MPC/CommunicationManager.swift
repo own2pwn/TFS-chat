@@ -31,7 +31,7 @@ struct ChatUser: Hashable {
 
 struct Chat {
     var receiver: ChatUser
-    let entries: [ChatEntry]
+    var entries: [ChatEntry]
 
     init(userId: String, userName: String?, entries: [ChatEntry] = []) {
         let user = ChatUser(userId: userId, userName: userName, isOnline: true)
@@ -67,10 +67,14 @@ extension Chat: Comparable {
 
 struct ChatEntry: Hashable {
     let message: String
+    let sender: String
+    let receiver: String
     let receivedAt: Date
 
-    init(with message: String) {
+    init(with message: String, sender: String, receiver: String) {
         self.message = message
+        self.sender = sender
+        self.receiver = receiver
         receivedAt = Date()
     }
 }
@@ -86,12 +90,6 @@ final class Box<Value> {
 final class CommunicationManager: CommunicatorDelegate {
     // MARK: - Output
 
-    var onUserFound: ((String, String?) -> Void)?
-
-    var onUserLost: ((String) -> Void)?
-
-    var onMessageReceived: ((String, String, String) -> Void)?
-
     var activeChatListUpdated: (([Chat]) -> Void)?
 
     // MARK: - Members
@@ -102,14 +100,6 @@ final class CommunicationManager: CommunicatorDelegate {
         return chats.filter { $0.receiver.isOnline }
     }
 
-//    private var chatBox = Box<[Chat]>(value: [])
-//
-//    private var activeChats: [Chat] {
-//        let filtered = chatBox.value.filter { $0.receiver.isOnline }
-//
-//        return filtered
-//    }
-
     // MARK: - CommunicatorDelegate
 
     func didFoundUser(userID: String, userName: String?) {
@@ -117,7 +107,6 @@ final class CommunicationManager: CommunicatorDelegate {
         setUserOnline(true, in: chat)
         activeChatListUpdated?(activeChats)
 
-        onUserFound?(userID, userName)
         print("^ found \(userID)")
     }
 
@@ -126,7 +115,6 @@ final class CommunicationManager: CommunicatorDelegate {
         setUserOnline(false, in: chat)
 
         activeChatListUpdated?(activeChats)
-        onUserLost?(userID)
         print("^ lost \(userID)")
     }
 
@@ -138,7 +126,14 @@ final class CommunicationManager: CommunicatorDelegate {
         assertionFailure(error.localizedDescription)
     }
 
-    func didReceiveMessage(text: String, fromUser: String, toUser: String) {}
+    func didReceiveMessage(text: String, fromUser: String, toUser: String) {
+        guard let chat = getChat(with: fromUser) else { return }
+
+        let newEntry = ChatEntry(with: text, sender: fromUser, receiver: toUser)
+        chats.mutate(element: chat) {
+            $0.entries.append(newEntry)
+        }
+    }
 
     // MARK: - Helpers
 
@@ -166,12 +161,10 @@ final class CommunicationManager: CommunicatorDelegate {
 
     private func getChat(with userID: String) -> Chat? {
         return chats.first(where: { $0.receiver.userId == userID })
-        //return chatBox.value.first(where: { $0.receiver.userId == userID })
     }
 
     private func createChat(with userID: String, userName: String?) -> Chat {
         let newChat = Chat(userId: userID, userName: userName)
-        //chatBox.value.append(newChat)
         chats.append(newChat)
 
         return newChat
