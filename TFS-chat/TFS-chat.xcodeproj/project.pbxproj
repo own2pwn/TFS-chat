@@ -18,6 +18,9 @@
 		DE3B87752157ADE300D9DA8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87732157ADE300D9DA8D /* Main.storyboard */; };
 		DE3B87772157ADE400D9DA8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87762157ADE400D9DA8D /* Assets.xcassets */; };
 		DE3B877A2157ADE400D9DA8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3B87782157ADE400D9DA8D /* LaunchScreen.storyboard */; };
+		DE6821BA2186592A00E954F6 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6821B92186592A00E954F6 /* ChatUser.swift */; };
+		DE6821BC2186593600E954F6 /* ChatEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6821BB2186593600E954F6 /* ChatEntry.swift */; };
+		DE6821BE2186678B00E954F6 /* Date+HumanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6821BD2186678B00E954F6 /* Date+HumanString.swift */; };
 		DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */; };
 		DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD1217DE158006AC274 /* GCDWorker.swift */; };
 		DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D3CD4217DE193006AC274 /* ProfileControllerViewModelOutput.swift */; };
@@ -37,9 +40,15 @@
 		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
+		DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */; };
+		DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicationManager.swift */; };
+		DEC384072185DD83002EAB2A /* Optional+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384062185DD83002EAB2A /* Optional+Comparable.swift */; };
+		DEC384092185DFC4002EAB2A /* Array+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384082185DFC4002EAB2A /* Array+Mutation.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
 		DEC8C67B217DF5560061C46E /* Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C67A217DF5560061C46E /* Finder.swift */; };
+		DEE58438218658F200792EDE /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE58437218658F200792EDE /* ChatModel.swift */; };
+		DEE948362184F2F800071D3B /* MultipeerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE948352184F2F800071D3B /* MultipeerCommunicator.swift */; };
 		DEF97D3B217E25C300EE3A46 /* NonThrowingAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF97D3A217E25C300EE3A46 /* NonThrowingAsyncOperation.swift */; };
 		DEF97D3D217E25CF00EE3A46 /* ThrowingAsyncOperationWithCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF97D3C217E25CF00EE3A46 /* ThrowingAsyncOperationWithCompletion.swift */; };
 		DEF97D40217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF97D3F217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift */; };
@@ -64,6 +73,9 @@
 		DE5D33FD2173314B00B1DC43 /* TFS-chat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TFS-chat-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE5D33FE2173314C00B1DC43 /* ThemesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemesViewController.h; sourceTree = "<group>"; };
 		DE5D33FF2173314C00B1DC43 /* ThemesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemesViewController.m; sourceTree = "<group>"; };
+		DE6821B92186592A00E954F6 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		DE6821BB2186593600E954F6 /* ChatEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntry.swift; sourceTree = "<group>"; };
+		DE6821BD2186678B00E954F6 /* Date+HumanString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+HumanString.swift"; sourceTree = "<group>"; };
 		DE6D3CCE217DDFBF006AC274 /* AsyncWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncWorker.swift; sourceTree = "<group>"; };
 		DE6D3CD1217DE158006AC274 /* GCDWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDWorker.swift; sourceTree = "<group>"; };
 		DE6D3CD4217DE193006AC274 /* ProfileControllerViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerViewModelOutput.swift; sourceTree = "<group>"; };
@@ -82,9 +94,15 @@
 		DEBD6608216A7B6400019ACD /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
+		DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicatorImp.swift; sourceTree = "<group>"; };
+		DEC384012185A70D002EAB2A /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		DEC384062185DD83002EAB2A /* Optional+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Comparable.swift"; sourceTree = "<group>"; };
+		DEC384082185DFC4002EAB2A /* Array+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Mutation.swift"; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
 		DEC8C67A217DF5560061C46E /* Finder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finder.swift; sourceTree = "<group>"; };
+		DEE58437218658F200792EDE /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		DEE948352184F2F800071D3B /* MultipeerCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicator.swift; sourceTree = "<group>"; };
 		DEF97D3A217E25C300EE3A46 /* NonThrowingAsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonThrowingAsyncOperation.swift; sourceTree = "<group>"; };
 		DEF97D3C217E25CF00EE3A46 /* ThrowingAsyncOperationWithCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingAsyncOperationWithCompletion.swift; sourceTree = "<group>"; };
 		DEF97D3F217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowingLoadingAsyncOperation.swift; sourceTree = "<group>"; };
@@ -171,6 +189,9 @@
 			children = (
 				DEBD93BC215FA55400671ABB /* UIColor+Init.swift */,
 				DE9A60C6217E1802000D0BFE /* UIImage+Init.swift */,
+				DEC384062185DD83002EAB2A /* Optional+Comparable.swift */,
+				DEC384082185DFC4002EAB2A /* Array+Mutation.swift */,
+				DE6821BD2186678B00E954F6 /* Date+HumanString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -273,6 +294,7 @@
 		DEC8C66F217DE2CB0061C46E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				DEE948342184F2E400071D3B /* MPC */,
 				DEBD6601216A737300019ACD /* ConversationListProvider.swift */,
 				DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */,
 			);
@@ -319,6 +341,9 @@
 			isa = PBXGroup;
 			children = (
 				DEBD65F8216A6A7D00019ACD /* ConversationModel.swift */,
+				DEE58437218658F200792EDE /* ChatModel.swift */,
+				DE6821B92186592A00E954F6 /* ChatUser.swift */,
+				DE6821BB2186593600E954F6 /* ChatEntry.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -329,6 +354,16 @@
 				DE0AFE0D217CE7720061987D /* UserInfoModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		DEE948342184F2E400071D3B /* MPC */ = {
+			isa = PBXGroup;
+			children = (
+				DEE948352184F2F800071D3B /* MultipeerCommunicator.swift */,
+				DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */,
+				DEC384012185A70D002EAB2A /* CommunicationManager.swift */,
+			);
+			path = MPC;
 			sourceTree = "<group>";
 		};
 		DEF97D39217E23EC00EE3A46 /* GCD */ = {
@@ -421,20 +456,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6821BC2186593600E954F6 /* ChatEntry.swift in Sources */,
 				DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */,
 				B91BA099217361F2002A90EF /* AppThemeManager.swift in Sources */,
 				DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */,
 				DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */,
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
+				DEC384092185DFC4002EAB2A /* Array+Mutation.swift in Sources */,
 				DE6D3CD9217DE1AB006AC274 /* ProfileControllerViewModelImp.swift in Sources */,
 				DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */,
 				DEC8C67B217DF5560061C46E /* Finder.swift in Sources */,
 				DEBD65FD216A6A9F00019ACD /* ConversationCellViewModel.swift in Sources */,
 				B93EBC5F21734A3900A86229 /* ThemeProvider.swift in Sources */,
+				DEE58438218658F200792EDE /* ChatModel.swift in Sources */,
 				DE9F43B9216A019500B224D4 /* ConversationsListViewController.swift in Sources */,
 				DE3B87722157ADE300D9DA8D /* ProfileController.swift in Sources */,
 				DE6D3CD7217DE19D006AC274 /* ProfileControllerViewModel.swift in Sources */,
 				DE3B87702157ADE300D9DA8D /* AppDelegate.swift in Sources */,
+				DEE948362184F2F800071D3B /* MultipeerCommunicator.swift in Sources */,
 				DEBD65F9216A6A7D00019ACD /* ConversationModel.swift in Sources */,
 				B93EBC6221734C1B00A86229 /* Themes.m in Sources */,
 				DEBD65FF216A6AA500019ACD /* ConversationCellViewModelImp.swift in Sources */,
@@ -442,18 +481,23 @@
 				DE6D3CD2217DE158006AC274 /* GCDWorker.swift in Sources */,
 				DE14648B216108ED00344D4D /* Constants.swift in Sources */,
 				DEF97D3B217E25C300EE3A46 /* NonThrowingAsyncOperation.swift in Sources */,
+				DE6821BA2186592A00E954F6 /* ChatUser.swift in Sources */,
 				DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */,
 				DE9A60C7217E1802000D0BFE /* UIImage+Init.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
+				DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */,
 				DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DE0AFE0E217CE7720061987D /* UserInfoModel.swift in Sources */,
 				B913601E21736DBD00B31BB8 /* ThemesViewController.m in Sources */,
 				DEF97D3D217E25CF00EE3A46 /* ThrowingAsyncOperationWithCompletion.swift in Sources */,
 				DEBD6602216A737300019ACD /* ConversationListProvider.swift in Sources */,
+				DEC384072185DD83002EAB2A /* Optional+Comparable.swift in Sources */,
 				DE9A60CC217E1C7D000D0BFE /* AsyncOperation.swift in Sources */,
+				DE6821BE2186678B00E954F6 /* Date+HumanString.swift in Sources */,
 				DEF97D40217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift in Sources */,
 				DE9A60C9217E1A0A000D0BFE /* OperationWorker.swift in Sources */,
+				DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
