@@ -9,10 +9,12 @@
 import Foundation
 
 struct ChatModel {
+    let id: String
     var receiver: ChatUser
     var entries: [ChatEntry]
 
     init(userId: String, userName: String?, entries: [ChatEntry] = []) {
+        id = UUID().uuidString
         let user = ChatUser(userId: userId, userName: userName, isOnline: true)
         receiver = user
         self.entries = entries

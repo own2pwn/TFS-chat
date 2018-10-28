@@ -44,6 +44,7 @@ final class ConversationsListViewController: UIViewController {
             return
         }
 
+        dialogInput = dialog.updateChat
         dialog.communicator = communicator
         dialog.chat = model
         dialog.title = model.receiver.userName ?? "no-name"
@@ -65,6 +66,8 @@ final class ConversationsListViewController: UIViewController {
         return manager
     }()
 
+    private var dialogInput: (([ChatModel]) -> Void)?
+
     // MARK: - Methods
 
     private func setupModule() {
@@ -72,7 +75,10 @@ final class ConversationsListViewController: UIViewController {
             guard let `self` = self else { return }
             self.activeChats = chatList
 
-            DispatchQueue.main.async { self.tableView.reloadData() }
+            DispatchQueue.main.async {
+                self.dialogInput?(chatList)
+                self.tableView.reloadData()
+            }
         }
     }
 

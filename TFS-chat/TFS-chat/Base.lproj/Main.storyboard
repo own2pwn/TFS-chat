@@ -255,6 +255,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjt-Rh-mlL">
+                                                    <rect key="frame" x="227.33333333333337" y="3.9999999999999982" width="174.66666666666663" height="27.333333333333329"/>
+                                                    <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="outgoing message cell" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lz-aL-BnX">
                                                     <rect key="frame" x="231.33333333333337" y="7.9999999999999982" width="166.66666666666663" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -265,8 +274,12 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="1lz-aL-BnX" secondAttribute="trailing" constant="16" id="7b2-IB-gIU"/>
                                                 <constraint firstItem="1lz-aL-BnX" firstAttribute="width" relation="lessThanOrEqual" secondItem="t1M-DL-kSt" secondAttribute="width" multiplier="0.75" id="BmA-PL-RqZ"/>
+                                                <constraint firstItem="Sjt-Rh-mlL" firstAttribute="trailing" secondItem="1lz-aL-BnX" secondAttribute="trailing" constant="4" id="K9F-i9-kBI"/>
                                                 <constraint firstItem="1lz-aL-BnX" firstAttribute="top" secondItem="t1M-DL-kSt" secondAttribute="top" constant="8" id="R5M-VE-OZE"/>
+                                                <constraint firstItem="Sjt-Rh-mlL" firstAttribute="bottom" secondItem="1lz-aL-BnX" secondAttribute="bottom" constant="4" id="SCP-RA-f6Y"/>
+                                                <constraint firstItem="Sjt-Rh-mlL" firstAttribute="top" secondItem="1lz-aL-BnX" secondAttribute="top" constant="-4" id="Tja-lt-BAf"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1lz-aL-BnX" secondAttribute="bottom" constant="8" id="oTq-Mz-nKr"/>
+                                                <constraint firstItem="Sjt-Rh-mlL" firstAttribute="leading" secondItem="1lz-aL-BnX" secondAttribute="leading" constant="-4" id="u2b-Wi-IaQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -280,6 +293,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHq-vo-M87">
+                                                    <rect key="frame" x="12" y="3.9999999999999982" width="176.66666666666666" height="27.333333333333329"/>
+                                                    <color key="backgroundColor" red="0.20392156859999999" green="0.73725490199999999" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incoming message cell" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCP-nh-BgR">
                                                     <rect key="frame" x="16" y="7.9999999999999982" width="168.66666666666666" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -288,10 +310,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="yHq-vo-M87" firstAttribute="top" secondItem="oCP-nh-BgR" secondAttribute="top" constant="-4" id="CNe-yy-yY9"/>
                                                 <constraint firstItem="oCP-nh-BgR" firstAttribute="width" relation="lessThanOrEqual" secondItem="LdI-wb-edA" secondAttribute="width" multiplier="0.75" id="MpW-ZK-yU0"/>
+                                                <constraint firstItem="yHq-vo-M87" firstAttribute="leading" secondItem="oCP-nh-BgR" secondAttribute="leading" constant="-4" id="VZW-du-rw8"/>
+                                                <constraint firstItem="yHq-vo-M87" firstAttribute="trailing" secondItem="oCP-nh-BgR" secondAttribute="trailing" constant="4" id="WQx-HD-eWm"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oCP-nh-BgR" secondAttribute="bottom" constant="8" id="bNv-tD-IQy"/>
                                                 <constraint firstItem="oCP-nh-BgR" firstAttribute="top" secondItem="LdI-wb-edA" secondAttribute="top" constant="8" id="h4v-nv-LeV"/>
                                                 <constraint firstItem="oCP-nh-BgR" firstAttribute="leading" secondItem="LdI-wb-edA" secondAttribute="leading" constant="16" id="qcx-Yf-84V"/>
+                                                <constraint firstItem="yHq-vo-M87" firstAttribute="bottom" secondItem="oCP-nh-BgR" secondAttribute="bottom" constant="4" id="veJ-og-N2P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

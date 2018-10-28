@@ -34,36 +34,31 @@ final class ConversationViewController: UIViewController {
         setupKeyboardHandling()
     }
 
-    private func setupKeyboardHandling() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    @objc
-    private func onKeyboardWillShow(_ notification: Notification) {
-        guard
-            let userInfo = notification.userInfo,
-            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-
-        messageTextViewBottom.constant = keyboardFrame.size.height
-
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    @objc
-    private func onKeyboardWillHide() {
-        messageTextViewBottom.constant = 0
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-        }
-    }
-
     // MARK: - Members
 
     var messages: [ChatEntry] {
         return chat.entries
+    }
+
+    // MARK: - Methods
+
+    func updateChat(with updatedList: [ChatModel]) {
+        guard let updatedChat = updatedList.first(where: { $0.id == chat?.id }) else { return }
+
+        chat = updatedChat
+        tableView.reloadData()
+        scrollToEnd()
+    }
+
+    private func scrollToEnd() {
+        let maxPathIndex = tableView.numberOfRows(inSection: 0) - 1
+        if maxPathIndex < 0 {
+            return
+        }
+
+        let lastRow = IndexPath(row: maxPathIndex, section: 0)
+
+        tableView.scrollToRow(at: lastRow, at: .bottom, animated: true)
     }
 
     // MARK: - Actions
@@ -92,6 +87,35 @@ final class ConversationViewController: UIViewController {
             let newPath = IndexPath(row: newPathIndex, section: 0)
             tableView.insertRows(at: [newPath], with: .automatic)
             messageTextView.text = ""
+            scrollToEnd()
+        }
+    }
+
+    // MARK: - Keyboard
+
+    private func setupKeyboardHandling() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc
+    private func onKeyboardWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        messageTextViewBottom.constant = keyboardFrame.size.height
+
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc
+    private func onKeyboardWillHide() {
+        messageTextViewBottom.constant = 0
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -118,6 +142,6 @@ extension ConversationViewController: UITableViewDataSource {
         if message.sender == communicator.localPeerID {
             return "outgoingCell"
         }
-        return "incomingCell'"
+        return "incomingCell"
     }
 }
