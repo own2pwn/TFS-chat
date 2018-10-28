@@ -22,7 +22,9 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
 
     // MARK: - Members
 
-    private var sessions = Set<MCSession>()
+    private var sessions = [String: MCSession]()
+
+    private var pendingSessions = [String: MCSession]()
 
     private let me: MCPeerID
 
@@ -58,8 +60,10 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
         }
 
         do {
-            try session.send(serialized, toPeers: session.connectedPeers, with: .reliable)
+            let peersToSend = session.connectedPeers.filter { $0.displayName != localPeerID }
+            try session.send(serialized, toPeers: peersToSend, with: .reliable)
             completion?(true, nil)
+            delegate?.didSendMessage(text: message, fromUser: localPeerID, toUser: userID)
         } catch {
             completion?(false, error)
         }
@@ -85,11 +89,11 @@ final class MultipeerCommunicatorImp: NSObject, MultipeerCommunicator {
         return try? JSONSerialization.data(withJSONObject: dict, options: [])
     }
 
-    private func createSession() -> MCSession {
+    private func createSession(for peerID: MCPeerID) -> MCSession {
         let newSession = MCSession(peer: me, securityIdentity: nil, encryptionPreference: .none)
         newSession.delegate = self
 
-        sessions.insert(newSession)
+        sessions[peerID.displayName] = newSession
 
         return newSession
     }
@@ -162,11 +166,16 @@ extension MultipeerCommunicatorImp: MCSessionDelegate {
 
 extension MultipeerCommunicatorImp: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        if let pending = pendingSessions.removeValue(forKey: peerID.displayName) {
+            invitationHandler(true, pending)
+            return
+        }
+
         guard !isSessionExists(with: peerID) else {
             invitationHandler(false, nil)
             return
         }
-        let newSession = createSession()
+        let newSession = createSession(for: peerID)
         invitationHandler(true, newSession)
     }
 
@@ -196,24 +205,28 @@ extension MultipeerCommunicatorImp: MCNearbyServiceBrowserDelegate {
     // MARK: - Helpers
 
     private func connect(with peer: MCPeerID) {
-        let newSession = createSession()
-        browser.invitePeer(peer, to: newSession, withContext: nil, timeout: 2)
+        if let existing = getSession(with: peer) {
+            browser.invitePeer(peer, to: existing, withContext: nil, timeout: 2)
+            pendingSessions[peer.displayName] = existing
+        } else {
+            let newSession = createSession(for: peer)
+            browser.invitePeer(peer, to: newSession, withContext: nil, timeout: 2)
+            pendingSessions[peer.displayName] = newSession
+        }
     }
 
     private func getSession(with userID: String) -> MCSession? {
-        let session = sessions.first(where: { $0.connectedPeers.contains(where: { $0.displayName == userID }) })
+        let session = sessions.first(where: { $0.value.connectedPeers.contains(where: { $0.displayName == userID }) })
 
-        return session
+        return session?.value
     }
 
     private func getSession(with peer: MCPeerID) -> MCSession? {
-        return sessions.first(where: { $0.connectedPeers.contains(peer) })
+        return sessions[peer.displayName]
     }
 
     private func removeSession(with peer: MCPeerID) {
-        if let session = getSession(with: peer) {
-            sessions.remove(session)
-        }
+        sessions.removeValue(forKey: peer.displayName)
     }
 
     private func getUserName(from discoveryInfo: [String: String]?) -> String? {

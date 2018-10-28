@@ -15,76 +15,20 @@ protocol CommunicatorDelegate: class {
     func failedToStartBrowsingForUsers(error: Error)
     func failedToStartAdvertising(error: Error)
 
+    func didSendMessage(text: String, fromUser: String, toUser: String)
     func didReceiveMessage(text: String, fromUser: String, toUser: String)
-}
-
-struct ChatUser: Hashable {
-    let userId: String
-    let userName: String?
-
-    var isOnline: Bool
-}
-
-struct Chat {
-    var receiver: ChatUser
-    var entries: [ChatEntry]
-
-    init(userId: String, userName: String?, entries: [ChatEntry] = []) {
-        let user = ChatUser(userId: userId, userName: userName, isOnline: true)
-        receiver = user
-        self.entries = entries
-    }
-
-    var lastMessageText: String? {
-        return entries.last?.message
-    }
-}
-
-extension Chat: Comparable {
-    static func < (lhs: Chat, rhs: Chat) -> Bool {
-        let lhsEntry = lhs.entries.last
-        let rhsEntry = rhs.entries.last
-
-        switch (lhsEntry, rhsEntry) {
-        case let (.some(left), .some(right)):
-            return left.receivedAt < right.receivedAt
-
-        case (nil, nil):
-            let lhsName = lhs.receiver.userName
-            let rhsName = rhs.receiver.userName
-
-            return lhsName < rhsName
-
-        default:
-            return false
-        }
-    }
-}
-
-struct ChatEntry: Hashable {
-    let message: String
-    let sender: String
-    let receiver: String
-    let receivedAt: Date
-
-    init(with message: String, sender: String, receiver: String) {
-        self.message = message
-        self.sender = sender
-        self.receiver = receiver
-        receivedAt = Date()
-    }
 }
 
 final class CommunicationManager: CommunicatorDelegate {
     // MARK: - Output
 
-    var activeChatListUpdated: (([Chat]) -> Void)?
+    var activeChatListUpdated: (([ChatModel]) -> Void)?
 
     // MARK: - Members
 
-    private var chats: [Chat] = []
+    private var chats: [ChatModel] = []
 
-    private var activeChats: [Chat] {
+    private var activeChats: [ChatModel] {
         return chats.filter { $0.receiver.isOnline }
     }
 
@@ -114,24 +58,36 @@ final class CommunicationManager: CommunicatorDelegate {
         assertionFailure(error.localizedDescription)
     }
 
+    func didSendMessage(text: String, fromUser: String, toUser: String) {
+        guard let chat = getChat(with: toUser) else { return }
+
+        let newEntry = ChatEntry(with: text, sender: fromUser, receiver: toUser)
+        appendEntry(newEntry, to: chat)
+    }
+
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
         guard let chat = getChat(with: fromUser) else { return }
 
         let newEntry = ChatEntry(with: text, sender: fromUser, receiver: toUser)
-        chats.mutate(element: chat) {
-            $0.entries.append(newEntry)
-        }
+        appendEntry(newEntry, to: chat)
     }
 
     // MARK: - Helpers
 
-    private func setUserOnline(_ online: Bool, in chat: Chat) {
+    private func appendEntry(_ entry: ChatEntry, to aChat: ChatModel) {
+        chats.mutate(element: aChat) {
+            $0.entries.append(entry)
+        }
+        activeChatListUpdated?(activeChats)
+    }
+
+    private func setUserOnline(_ online: Bool, in chat: ChatModel) {
         chats.mutate(element: chat) {
             $0.receiver.isOnline = online
         }
     }
 
-    private func getChatOrCreate(with userID: String, userName: String?) -> Chat {
+    private func getChatOrCreate(with userID: String, userName: String?) -> ChatModel {
         if let existing = getChat(with: userID) {
             return existing
         }
@@ -147,12 +103,12 @@ final class CommunicationManager: CommunicatorDelegate {
         _ = createChat(with: userID, userName: userName)
     }
 
-    private func getChat(with userID: String) -> Chat? {
+    private func getChat(with userID: String) -> ChatModel? {
         return chats.first(where: { $0.receiver.userId == userID })
     }
 
-    private func createChat(with userID: String, userName: String?) -> Chat {
-        let newChat = Chat(userId: userID, userName: userName)
+    private func createChat(with userID: String, userName: String?) -> ChatModel {
+        let newChat = ChatModel(userId: userID, userName: userName)
         chats.append(newChat)
 
         return newChat

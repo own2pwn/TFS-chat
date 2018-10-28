@@ -39,7 +39,7 @@ final class ConversationsListViewController: UIViewController {
         guard
             segue.identifier == showDialogSegue,
             let dialog = segue.destination as? ConversationViewController,
-            let model = sender as? Chat else {
+            let model = sender as? ChatModel else {
             super.prepare(for: segue, sender: sender)
             return
         }
@@ -76,7 +76,7 @@ final class ConversationsListViewController: UIViewController {
         }
     }
 
-    private func makeCellViewModel(from chat: Chat) -> ConversationCellViewModelImp {
+    private func makeCellViewModel(from chat: ChatModel) -> ConversationCellViewModelImp {
         let model = ConversationModel(recipent: chat.receiver.userName ?? "no-name",
                                       lastMessage: chat.lastMessageText,
                                       lastMessageDate: chat.entries.last?.receivedAt,
@@ -102,7 +102,7 @@ final class ConversationsListViewController: UIViewController {
 
     private let sections = ["Online", "History"]
 
-    private var activeChats = [Chat]()
+    private var activeChats = [ChatModel]()
 
     // MARK: - Actions
 

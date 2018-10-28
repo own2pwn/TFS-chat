@@ -24,7 +24,7 @@ final class ConversationViewController: UIViewController {
 
     var communicator: MultipeerCommunicator!
 
-    var chat: Chat!
+    var chat: ChatModel!
 
     // MARK: - Overrides
 
@@ -72,11 +72,11 @@ final class ConversationViewController: UIViewController {
     private func sendMessage() {
         guard let message = messageTextView.text else { return }
         communicator.sendMessage(message, to: chat.receiver.userId) { [weak self] success, err in
-            DispatchQueue.main.async { self?.handleMessageCallback(success, err: err) }
+            DispatchQueue.main.async { self?.handleMessageCallback(message: message, success, err: err) }
         }
     }
 
-    private func handleMessageCallback(_ success: Bool, err: Error?) {
+    private func handleMessageCallback(message: String, _ success: Bool, err: Error?) {
         if let err = err {
             let alert = UIAlertController(title: "Error while sending message", message: err.localizedDescription, preferredStyle: .alert)
 
@@ -85,9 +85,11 @@ final class ConversationViewController: UIViewController {
 
             present(alert, animated: true)
         } else {
+            let newEntry = ChatEntry(with: message, sender: communicator.localPeerID, receiver: chat.receiver.userId)
+            chat.entries.append(newEntry)
+
             let newPathIndex = tableView.numberOfRows(inSection: 0)
             let newPath = IndexPath(row: newPathIndex, section: 0)
-
             tableView.insertRows(at: [newPath], with: .automatic)
             messageTextView.text = ""
         }
