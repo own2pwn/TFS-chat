@@ -45,13 +45,3 @@ final class ConversationCellViewModelImp: ConversationCellViewModel {
         hasUnreadMessage = model.hasUnreadMessages
     }
 }
-
-private extension Date {
-    var humanString: String {
-        let fmt = DateFormatter()
-        let isToday = Calendar.current.isDateInToday(self)
-        fmt.dateFormat = isToday ? "HH:mm" : "dd MMM"
-
-        return fmt.string(from: self)
-    }
-}

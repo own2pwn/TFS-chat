@@ -18,6 +18,9 @@ final class MessageCell: UITableViewCell, MessageCellConfiguration {
     @IBOutlet
     private var messageLabel: UILabel!
 
+    @IBOutlet
+    private var dateLabel: UILabel!
+
     // MARK: - Members
 
     var messageText: String? {
@@ -28,9 +31,15 @@ final class MessageCell: UITableViewCell, MessageCellConfiguration {
         }
     }
 
+    var messageDate: Date? {
+        didSet {
+            dateLabel.text = messageDate?.humanString
+        }
+    }
+
     // MARK: - Interface
 
-    func setup(with text: String) {
+    func setup(with text: String, date: Date) {
         messageLabel.text = text
     }
 }

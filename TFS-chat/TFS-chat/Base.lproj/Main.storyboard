@@ -270,19 +270,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri, 16:40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZH-hu-JDz">
+                                                    <rect key="frame" x="16" y="9.3333333333333357" width="61" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="1lz-aL-BnX" secondAttribute="trailing" constant="16" id="7b2-IB-gIU"/>
                                                 <constraint firstItem="1lz-aL-BnX" firstAttribute="width" relation="lessThanOrEqual" secondItem="t1M-DL-kSt" secondAttribute="width" multiplier="0.75" id="BmA-PL-RqZ"/>
                                                 <constraint firstItem="Sjt-Rh-mlL" firstAttribute="trailing" secondItem="1lz-aL-BnX" secondAttribute="trailing" constant="4" id="K9F-i9-kBI"/>
                                                 <constraint firstItem="1lz-aL-BnX" firstAttribute="top" secondItem="t1M-DL-kSt" secondAttribute="top" constant="8" id="R5M-VE-OZE"/>
                                                 <constraint firstItem="Sjt-Rh-mlL" firstAttribute="bottom" secondItem="1lz-aL-BnX" secondAttribute="bottom" constant="4" id="SCP-RA-f6Y"/>
+                                                <constraint firstItem="nZH-hu-JDz" firstAttribute="centerY" secondItem="1lz-aL-BnX" secondAttribute="centerY" id="T93-Lj-27T"/>
                                                 <constraint firstItem="Sjt-Rh-mlL" firstAttribute="top" secondItem="1lz-aL-BnX" secondAttribute="top" constant="-4" id="Tja-lt-BAf"/>
+                                                <constraint firstAttribute="trailing" secondItem="1lz-aL-BnX" secondAttribute="trailing" constant="16" id="lob-yN-oUD"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1lz-aL-BnX" secondAttribute="bottom" constant="8" id="oTq-Mz-nKr"/>
                                                 <constraint firstItem="Sjt-Rh-mlL" firstAttribute="leading" secondItem="1lz-aL-BnX" secondAttribute="leading" constant="-4" id="u2b-Wi-IaQ"/>
+                                                <constraint firstItem="nZH-hu-JDz" firstAttribute="leading" secondItem="t1M-DL-kSt" secondAttribute="leading" constant="16" id="yfA-lC-VcU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="nZH-hu-JDz" id="pFQ-Mz-UJM"/>
                                             <outlet property="messageLabel" destination="1lz-aL-BnX" id="RXv-mH-Z1t"/>
                                         </connections>
                                     </tableViewCell>
@@ -308,19 +317,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri, 16:40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-uK-EwV">
+                                                    <rect key="frame" x="337" y="9.3333333333333357" width="61" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yHq-vo-M87" firstAttribute="top" secondItem="oCP-nh-BgR" secondAttribute="top" constant="-4" id="CNe-yy-yY9"/>
+                                                <constraint firstItem="oCP-nh-BgR" firstAttribute="leading" secondItem="LdI-wb-edA" secondAttribute="leading" constant="16" id="Egr-8r-pbo"/>
+                                                <constraint firstItem="hWn-uK-EwV" firstAttribute="centerY" secondItem="oCP-nh-BgR" secondAttribute="centerY" id="Ivl-jh-kyQ"/>
                                                 <constraint firstItem="oCP-nh-BgR" firstAttribute="width" relation="lessThanOrEqual" secondItem="LdI-wb-edA" secondAttribute="width" multiplier="0.75" id="MpW-ZK-yU0"/>
                                                 <constraint firstItem="yHq-vo-M87" firstAttribute="leading" secondItem="oCP-nh-BgR" secondAttribute="leading" constant="-4" id="VZW-du-rw8"/>
                                                 <constraint firstItem="yHq-vo-M87" firstAttribute="trailing" secondItem="oCP-nh-BgR" secondAttribute="trailing" constant="4" id="WQx-HD-eWm"/>
+                                                <constraint firstAttribute="trailing" secondItem="hWn-uK-EwV" secondAttribute="trailing" constant="16" id="ZNz-D3-Rup"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oCP-nh-BgR" secondAttribute="bottom" constant="8" id="bNv-tD-IQy"/>
                                                 <constraint firstItem="oCP-nh-BgR" firstAttribute="top" secondItem="LdI-wb-edA" secondAttribute="top" constant="8" id="h4v-nv-LeV"/>
-                                                <constraint firstItem="oCP-nh-BgR" firstAttribute="leading" secondItem="LdI-wb-edA" secondAttribute="leading" constant="16" id="qcx-Yf-84V"/>
                                                 <constraint firstItem="yHq-vo-M87" firstAttribute="bottom" secondItem="oCP-nh-BgR" secondAttribute="bottom" constant="4" id="veJ-og-N2P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="hWn-uK-EwV" id="Gx5-Xd-376"/>
                                             <outlet property="messageLabel" destination="oCP-nh-BgR" id="koW-ts-gvD"/>
                                         </connections>
                                     </tableViewCell>

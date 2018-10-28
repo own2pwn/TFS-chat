@@ -132,7 +132,7 @@ extension ConversationViewController: UITableViewDataSource {
         let reuseId = getCellReuseID(for: model)
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! MessageCell
 
-        cell.setup(with: model.message)
+        cell.setup(with: model.message, date: model.receivedAt)
         cell.selectionStyle = .none
 
         return cell
