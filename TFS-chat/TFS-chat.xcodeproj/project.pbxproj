@@ -37,6 +37,8 @@
 		DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */; };
 		DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBD93BC215FA55400671ABB /* UIColor+Init.swift */; };
 		DEBF32562173B638003E540C /* ThemesViewController-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91BA09A21736900002A90EF /* ThemesViewController-swift.swift */; };
+		DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */; };
+		DEC384022185A70D002EAB2A /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
 		DEC8C67B217DF5560061C46E /* Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C67A217DF5560061C46E /* Finder.swift */; };
@@ -83,6 +85,8 @@
 		DEBD6608216A7B6400019ACD /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		DEBD660A216A83DE00019ACD /* DialogMessageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageProvider.swift; sourceTree = "<group>"; };
 		DEBD93BC215FA55400671ABB /* UIColor+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Init.swift"; sourceTree = "<group>"; };
+		DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicatorImp.swift; sourceTree = "<group>"; };
+		DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
 		DEC8C67A217DF5560061C46E /* Finder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finder.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 			isa = PBXGroup;
 			children = (
 				DEE948352184F2F800071D3B /* MultipeerCommunicator.swift */,
+				DEC383FF2185A6F1002EAB2A /* MultipeerCommunicatorImp.swift */,
+				DEC384012185A70D002EAB2A /* CommunicatorDelegate.swift */,
 			);
 			path = MPC;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				DE6D3CCF217DDFBF006AC274 /* AsyncWorker.swift in Sources */,
 				DE9A60C7217E1802000D0BFE /* UIImage+Init.swift in Sources */,
 				DEBD65FB216A6A8D00019ACD /* ConversationCell.swift in Sources */,
+				DEC384022185A70D002EAB2A /* CommunicatorDelegate.swift in Sources */,
 				DE6D3CD5217DE193006AC274 /* ProfileControllerViewModelOutput.swift in Sources */,
 				DEBD6606216A77D300019ACD /* ConversationViewController.swift in Sources */,
 				DE0AFE0E217CE7720061987D /* UserInfoModel.swift in Sources */,
@@ -466,6 +473,7 @@
 				DE9A60CC217E1C7D000D0BFE /* AsyncOperation.swift in Sources */,
 				DEF97D40217E260100EE3A46 /* ThrowingLoadingAsyncOperation.swift in Sources */,
 				DE9A60C9217E1A0A000D0BFE /* OperationWorker.swift in Sources */,
+				DEC384002185A6F1002EAB2A /* MultipeerCommunicatorImp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
