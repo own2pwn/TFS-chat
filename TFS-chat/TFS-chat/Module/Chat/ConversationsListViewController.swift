@@ -72,8 +72,11 @@ final class ConversationsListViewController: UIViewController {
 
     private let moduleFactory = MPCModuleFactory()
 
+    private let communicator: MultipeerCommunicator = {
+        return MultipeerCommunicatorImp()
+    }()
+
     private lazy var communicationManager: CommunicationManager = {
-        let communicator = MultipeerCommunicatorImp()
         let manager = CommunicationManager()
         communicator.delegate = manager
         communicator.isOnline = true

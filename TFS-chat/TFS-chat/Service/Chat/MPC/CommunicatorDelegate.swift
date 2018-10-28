@@ -29,9 +29,15 @@ final class CommunicationManager: CommunicatorDelegate {
 
     // MARK: - CommunicatorDelegate
 
-    func didFoundUser(userID: String, userName: String?) {}
+    func didFoundUser(userID: String, userName: String?) {
+        onUserFound?(userID, userName)
+        print("^ found \(userID)")
+    }
 
-    func didLostUser(userID: String) {}
+    func didLostUser(userID: String) {
+        onUserLost?(userID)
+        print("^ lost \(userID)")
+    }
 
     func failedToStartBrowsingForUsers(error: Error) {
         assertionFailure(error.localizedDescription)
