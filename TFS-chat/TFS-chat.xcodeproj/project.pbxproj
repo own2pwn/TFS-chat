@@ -41,6 +41,7 @@
 		DEC384022185A70D002EAB2A /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384012185A70D002EAB2A /* CommunicationManager.swift */; };
 		DEC384042185A765002EAB2A /* MPCModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384032185A765002EAB2A /* MPCModuleFactory.swift */; };
 		DEC384072185DD83002EAB2A /* Optional+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384062185DD83002EAB2A /* Optional+Comparable.swift */; };
+		DEC384092185DFC4002EAB2A /* Array+Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC384082185DFC4002EAB2A /* Array+Mutation.swift */; };
 		DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C673217DE3470061C46E /* UserInfoProvider.swift */; };
 		DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */; };
 		DEC8C67B217DF5560061C46E /* Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8C67A217DF5560061C46E /* Finder.swift */; };
@@ -91,6 +92,7 @@
 		DEC384012185A70D002EAB2A /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		DEC384032185A765002EAB2A /* MPCModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCModuleFactory.swift; sourceTree = "<group>"; };
 		DEC384062185DD83002EAB2A /* Optional+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Comparable.swift"; sourceTree = "<group>"; };
+		DEC384082185DFC4002EAB2A /* Array+Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Mutation.swift"; sourceTree = "<group>"; };
 		DEC8C673217DE3470061C46E /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		DEC8C678217DE6D90061C46E /* UserInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDataManager.swift; sourceTree = "<group>"; };
 		DEC8C67A217DF5560061C46E /* Finder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finder.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				DEBD93BC215FA55400671ABB /* UIColor+Init.swift */,
 				DE9A60C6217E1802000D0BFE /* UIImage+Init.swift */,
 				DEC384062185DD83002EAB2A /* Optional+Comparable.swift */,
+				DEC384082185DFC4002EAB2A /* Array+Mutation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				DEC8C674217DE3470061C46E /* UserInfoProvider.swift in Sources */,
 				DEBD660B216A83DE00019ACD /* DialogMessageProvider.swift in Sources */,
 				DEBD93BD215FA55400671ABB /* UIColor+Init.swift in Sources */,
+				DEC384092185DFC4002EAB2A /* Array+Mutation.swift in Sources */,
 				DE6D3CD9217DE1AB006AC274 /* ProfileControllerViewModelImp.swift in Sources */,
 				DEC8C679217DE6D90061C46E /* UserInfoDataManager.swift in Sources */,
 				DEC8C67B217DF5560061C46E /* Finder.swift in Sources */,

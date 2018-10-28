@@ -29,7 +29,7 @@ struct ChatUser: Hashable {
     }
 }
 
-struct Chat: Comparable {
+struct Chat {
     var receiver: ChatUser
     let entries: [ChatEntry]
 
@@ -83,16 +83,6 @@ final class Box<Value> {
     }
 }
 
-extension Array where Element: Comparable {
-    mutating func mutate(element: Element, _ mutation: ((inout Element) -> Void)) {
-        guard let index = firstIndex(where: { $0 == element }) else { return }
-        var element = self[index]
-        mutation(&element)
-
-        self[index] = element
-    }
-}
-
 final class CommunicationManager: CommunicatorDelegate {
     // MARK: - Output
 
@@ -106,27 +96,25 @@ final class CommunicationManager: CommunicatorDelegate {
 
     // MARK: - Members
 
-    // private var chats: [Chat] = []
-
-//    private var activeChats: [Chat] {
-//        return chats.filter { $0.receiver.isOnline }
-//    }
-
-    private var chatBox = Box<[Chat]>(value: [])
+    private var chats: [Chat] = []
 
     private var activeChats: [Chat] {
-        let filtered = chatBox.value.filter { $0.receiver.isOnline }
-
-        return filtered
+        return chats.filter { $0.receiver.isOnline }
     }
+
+//    private var chatBox = Box<[Chat]>(value: [])
+//
+//    private var activeChats: [Chat] {
+//        let filtered = chatBox.value.filter { $0.receiver.isOnline }
+//
+//        return filtered
+//    }
 
     // MARK: - CommunicatorDelegate
 
     func didFoundUser(userID: String, userName: String?) {
-        var arr = chatBox.value
-        let some = arr[1]
-
-        createChatIfNotExists(with: userID, userName: userName)
+        let chat = getChatOrCreate(with: userID, userName: userName)
+        setUserOnline(true, in: chat)
         activeChatListUpdated?(activeChats)
 
         onUserFound?(userID, userName)
@@ -134,8 +122,8 @@ final class CommunicationManager: CommunicatorDelegate {
     }
 
     func didLostUser(userID: String) {
-        guard var chat = getChat(with: userID) else { return }
-        chat.receiver.setOnline(false)
+        guard let chat = getChat(with: userID) else { return }
+        setUserOnline(false, in: chat)
 
         activeChatListUpdated?(activeChats)
         onUserLost?(userID)
@@ -154,6 +142,20 @@ final class CommunicationManager: CommunicatorDelegate {
 
     // MARK: - Helpers
 
+    private func setUserOnline(_ online: Bool, in chat: Chat) {
+        chats.mutate(element: chat) {
+            $0.receiver.isOnline = online
+        }
+    }
+
+    private func getChatOrCreate(with userID: String, userName: String?) -> Chat {
+        if let existing = getChat(with: userID) {
+            return existing
+        }
+
+        return createChat(with: userID, userName: userName)
+    }
+
     private func createChatIfNotExists(with userID: String, userName: String?) {
         if getChat(with: userID) != nil {
             return
@@ -163,12 +165,14 @@ final class CommunicationManager: CommunicatorDelegate {
     }
 
     private func getChat(with userID: String) -> Chat? {
-        return chatBox.value.first(where: { $0.receiver.userId == userID })
+        return chats.first(where: { $0.receiver.userId == userID })
+        //return chatBox.value.first(where: { $0.receiver.userId == userID })
     }
 
     private func createChat(with userID: String, userName: String?) -> Chat {
         let newChat = Chat(userId: userID, userName: userName)
-        chatBox.value.append(newChat)
+        //chatBox.value.append(newChat)
+        chats.append(newChat)
 
         return newChat
     }
